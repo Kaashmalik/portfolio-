@@ -1,0 +1,58 @@
+---
+title: "Building a Scalable Cricket SaaS with Next.js 15 & NestJS"
+date: "2026-04-29"
+summary: "A deep dive into the architecture and decisions behind building a production-grade sports management platform."
+tags: ["Next.js 15", "NestJS", "Architecture", "SaaS"]
+---
+
+Building a modern SaaS platform requires making foundational architecture decisions that will support scale, maintainability, and rapid feature development. When I set out to build a comprehensive Cricket Tournament Management SaaS, I knew the technology stack had to be robust.
+
+Here is a deep dive into the architecture and why I chose Next.js 15 and NestJS.
+
+## The Problem
+
+Managing a cricket tournament is complex. You have to track:
+- Multiple teams, players, and officials.
+- Real-time scoring where every ball counts.
+- Complex statistics and leaderboards.
+- Diverse stakeholders (admins, players, fans) who need different views.
+
+Existing solutions were either too basic (spreadsheets) or prohibitively expensive for local leagues. The goal was to build an affordable, white-label solution with enterprise-grade features.
+
+## Why Next.js 15 for the Frontend?
+
+Next.js 15, specifically with the App Router, was the natural choice for the frontend.
+
+1.  **React Server Components (RSC):** The ability to fetch data securely on the server and ship zero JavaScript to the client for complex dashboard views drastically improved our Lighthouse scores.
+2.  **Edge Rendering:** For the public-facing "Fan View" where traffic can spike during a live match, edge caching and rendering ensured sub-second load times regardless of user location.
+3.  **Built-in SEO:** Since this is a white-label product, each league needed its own SEO-optimized landing page. Next.js metadata API made this dynamic and effortless.
+
+```tsx
+// Example of dynamic metadata for a specific league
+export async function generateMetadata({ params }) {
+  const league = await fetchLeague(params.slug);
+  return {
+    title: `${league.name} | Live Scores`,
+    description: league.description,
+  };
+}
+```
+
+## Why NestJS for the Backend?
+
+While you *can* build a full backend in Next.js using Route Handlers, a complex domain like cricket scoring benefits from a dedicated, structured backend.
+
+NestJS provides:
+- **Strong Typing & Dependency Injection:** Coming from an Angular background, the structural similarity made organizing complex business logic (like parsing scorecards) highly testable.
+- **Microservices Ready:** As the platform grows, splitting the notification engine or the PDF generation service into separate microservices is trivial with NestJS.
+- **WebSockets:** Real-time updates are non-negotiable for live sports. NestJS's native WebSockets integration made broadcasting ball-by-ball updates to thousands of connected clients seamless.
+
+## The Database Layer: Supabase & Drizzle ORM
+
+I chose **Supabase** (PostgreSQL) for the database. The killer feature here was Realtime. For certain views, we could subscribe directly to database changes, bypassing the traditional REST API layer entirely.
+
+For interacting with the database, **Drizzle ORM** was selected over Prisma. In 2026, Drizzle's edge-compatibility, SQL-like syntax, and absolute lack of a heavy Rust binary makes it the superior choice for high-performance serverless environments.
+
+## Conclusion
+
+The combination of Next.js 15, NestJS, and Supabase provides a developer experience that is hard to beat. It allows a small team to build a platform that feels like it was engineered by a massive enterprise, bringing premium software to local cricket leagues around the world.

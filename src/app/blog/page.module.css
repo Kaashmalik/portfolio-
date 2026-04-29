@@ -1,0 +1,116 @@
+.page {
+  padding: var(--space-4xl) var(--space-lg) var(--space-2xl);
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: var(--space-3xl);
+  text-align: center;
+}
+
+.title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: var(--space-md);
+  letter-spacing: -0.02em;
+}
+
+.description {
+  font-size: clamp(1.1rem, 1.5vw, 1.25rem);
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.postsList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.postCard {
+  padding: var(--space-xl);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.postCard:hover {
+  background: var(--glass-bg-hover);
+  border-color: var(--glass-border-hover);
+  transform: translateY(-4px);
+  box-shadow: var(--glow-primary);
+}
+
+.postMeta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  color: var(--text-muted);
+  font-size: var(--font-small);
+  font-family: var(--font-mono);
+  margin-bottom: var(--space-md);
+}
+
+.postTitle {
+  font-size: var(--font-h2);
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+}
+
+.postTitle a {
+  transition: color var(--duration-fast) ease;
+}
+
+.postTitle a:hover {
+  color: var(--accent-start);
+}
+
+.postSummary {
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: var(--space-lg);
+}
+
+.postFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--glass-border);
+}
+
+.postTags {
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.readMore {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-weight: 600;
+  color: var(--accent-start);
+  transition: gap var(--duration-normal) var(--ease-out);
+}
+
+.readMore:hover {
+  gap: var(--space-sm);
+}
+
+.noPosts {
+  text-align: center;
+  color: var(--text-muted);
+  padding: var(--space-3xl) 0;
+  border: 1px dashed var(--glass-border);
+  border-radius: var(--radius-xl);
+}

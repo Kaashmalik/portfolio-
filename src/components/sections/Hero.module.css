@@ -1,0 +1,202 @@
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: var(--space-4xl) var(--space-lg);
+}
+
+.heroContent {
+  max-width: var(--max-width);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-xl);
+  z-index: 1;
+}
+
+.greeting {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-family: var(--font-mono);
+  font-size: var(--font-small);
+  color: var(--accent-start);
+  letter-spacing: 0.05em;
+  opacity: 0;
+  animation: fadeInUp 0.6s var(--ease-out) 0.2s forwards;
+}
+
+.title {
+  font-size: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  max-width: 900px;
+  opacity: 0;
+  animation: fadeInUp 0.6s var(--ease-out) 0.4s forwards;
+}
+
+.subtitle {
+  font-size: clamp(1.05rem, 1.2vw, 1.25rem);
+  color: var(--text-secondary);
+  max-width: 600px;
+  line-height: 1.7;
+  opacity: 0;
+  animation: fadeInUp 0.6s var(--ease-out) 0.6s forwards;
+}
+
+.heroCtas {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  justify-content: center;
+  opacity: 0;
+  animation: fadeInUp 0.6s var(--ease-out) 0.8s forwards;
+}
+
+.heroMeta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xl);
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: var(--space-md);
+  opacity: 0;
+  animation: fadeInUp 0.6s var(--ease-out) 1s forwards;
+}
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: var(--font-small);
+  color: var(--text-muted);
+}
+
+.metaValue {
+  font-weight: 700;
+  color: var(--text-primary);
+  font-size: 1.1rem;
+}
+
+/* Animated grid background */
+.heroGrid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+}
+
+[data-theme="light"] .heroGrid {
+  background-image:
+    linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
+}
+
+/* Floating orbs */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.orb1 {
+  width: 500px;
+  height: 500px;
+  top: -10%;
+  right: -10%;
+  background: var(--accent-start);
+  animation: float 8s ease-in-out infinite;
+}
+
+.orb2 {
+  width: 400px;
+  height: 400px;
+  bottom: -5%;
+  left: -10%;
+  background: var(--accent-end);
+  animation: float 10s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+.orb3 {
+  width: 300px;
+  height: 300px;
+  top: 40%;
+  right: 20%;
+  background: var(--accent-mid);
+  opacity: 0.08;
+  animation: float 12s ease-in-out infinite;
+  animation-delay: 4s;
+}
+
+/* Scroll indicator */
+.scrollIndicator {
+  position: absolute;
+  bottom: var(--space-2xl);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  color: var(--text-muted);
+  font-size: var(--font-small);
+  opacity: 0;
+  animation: fadeInUp 0.6s var(--ease-out) 1.2s forwards;
+}
+
+.scrollDot {
+  width: 20px;
+  height: 32px;
+  border: 2px solid var(--glass-border-hover);
+  border-radius: 12px;
+  position: relative;
+}
+
+.scrollDot::after {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 8px;
+  background: var(--accent-start);
+  border-radius: 4px;
+  animation: scrollBounce 2s ease-in-out infinite;
+}
+
+@keyframes scrollBounce {
+  0%, 100% { top: 6px; opacity: 1; }
+  50% { top: 16px; opacity: 0.3; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 640px) {
+  .heroMeta {
+    gap: var(--space-lg);
+  }
+}

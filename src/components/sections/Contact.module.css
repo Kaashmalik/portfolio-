@@ -1,0 +1,132 @@
+.contact {
+  padding: var(--section-pad-y) var(--section-pad-x);
+}
+
+.contactGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-2xl);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .contactGrid {
+    grid-template-columns: 1fr 1.2fr;
+  }
+}
+
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.contactTitle {
+  font-size: var(--font-h2);
+  font-weight: 700;
+}
+
+.contactDesc {
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.contactItems {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.contactItemIcon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  background: rgba(124, 88, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-start);
+  flex-shrink: 0;
+}
+
+.contactItemLabel {
+  font-size: var(--font-small);
+  color: var(--text-muted);
+}
+
+.contactItemValue {
+  font-size: var(--font-body);
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* Form */
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  padding: var(--space-xl);
+  border-radius: var(--radius-xl);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.formLabel {
+  font-size: var(--font-small);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.formInput,
+.formTextarea {
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  background: var(--bg-secondary);
+  border: 1px solid var(--glass-border);
+  color: var(--text-primary);
+  font-size: var(--font-body);
+  transition: border-color var(--duration-fast) ease, box-shadow var(--duration-fast) ease;
+}
+
+.formInput:focus,
+.formTextarea:focus {
+  border-color: var(--accent-start);
+  box-shadow: 0 0 0 3px rgba(124, 88, 255, 0.15);
+}
+
+.formInput::placeholder,
+.formTextarea::placeholder {
+  color: var(--text-muted);
+}
+
+.formTextarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.submitBtn {
+  align-self: flex-start;
+}
+
+.successMessage {
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  background: rgba(76, 190, 108, 0.1);
+  border: 1px solid rgba(76, 190, 108, 0.3);
+  color: var(--success);
+  font-size: var(--font-small);
+  text-align: center;
+}

@@ -1,0 +1,119 @@
+.projects {
+  padding: var(--section-pad-y) var(--section-pad-x);
+}
+
+.projectsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-2xl);
+}
+
+.projectCard {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
+  padding: var(--space-xl);
+  border-radius: var(--radius-xl);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  transition: all var(--duration-normal) var(--ease-out);
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .projectCard {
+    grid-template-columns: 1.2fr 1fr;
+    padding: var(--space-2xl);
+  }
+
+  .projectCard:nth-child(even) {
+    direction: rtl;
+  }
+
+  .projectCard:nth-child(even) > * {
+    direction: ltr;
+  }
+}
+
+.projectCard:hover {
+  border-color: var(--glass-border-hover);
+  background: var(--glass-bg-hover);
+  box-shadow: var(--glow-primary);
+  transform: translateY(-4px);
+}
+
+.projectImage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--bg-tertiary);
+}
+
+.projectImagePlaceholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+}
+
+.projectCategory {
+  position: absolute;
+  top: var(--space-md);
+  left: var(--space-md);
+}
+
+.projectInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-md);
+}
+
+.projectTitle {
+  font-size: var(--font-h2);
+  font-weight: 700;
+}
+
+.projectDesc {
+  color: var(--text-secondary);
+  font-size: var(--font-body);
+  line-height: 1.7;
+}
+
+.projectTech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.projectHighlights {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.highlight {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  font-size: var(--font-small);
+  color: var(--text-secondary);
+}
+
+.highlightIcon {
+  color: var(--success);
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.projectLinks {
+  display: flex;
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+}
