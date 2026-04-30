@@ -48,10 +48,10 @@ export default function Navbar() {
       aria-label="Main navigation"
     >
       <div className={styles.navInner}>
-        <Link href="/" className={styles.logo} aria-label="MalikTech Home">
+        <Link href="/" className={styles.logo} aria-label="MTK Codex Home">
           <Code2 size={24} />
           <span>
-            Malik<span className={styles.logoAccent}>Tech</span>
+            MTK <span className={styles.logoAccent}>Codex</span>
           </span>
         </Link>
 

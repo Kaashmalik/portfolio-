@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Code2, Mail, ArrowUp, Heart, Globe, GitFork } from 'lucide-react';
+import { Code2, Mail, ArrowUp, Heart, Phone } from 'lucide-react';
 import styles from './Footer.module.css';
 
 const navItems = [
@@ -30,9 +30,10 @@ function LinkedinIcon({ size = 18 }: { size?: number }) {
 }
 
 const socialLinks = [
-  { label: 'GitHub', href: 'https://github.com/', icon: GithubIcon },
-  { label: 'LinkedIn', href: 'https://linkedin.com/in/', icon: LinkedinIcon },
-  { label: 'Email', href: 'mailto:hello@maliktech.dev', icon: () => <Mail size={18} /> },
+  { label: 'GitHub', href: 'https://github.com/Kaashmalik', icon: GithubIcon },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/malik-kashif-15022b294/', icon: LinkedinIcon },
+  { label: 'WhatsApp', href: 'https://wa.me/923038111297', icon: () => <Phone size={18} /> },
+  { label: 'Email', href: 'mailto:kaash0542@gmail.com', icon: () => <Mail size={18} /> },
 ];
 
 export default function Footer() {
@@ -58,7 +59,7 @@ export default function Footer() {
             <div className={styles.footerLogo}>
               <Code2 size={20} />
               <span>
-                Malik<span className={styles.footerLogoAccent}>Tech</span>
+                MTK <span className={styles.footerLogoAccent}>Codex</span>
               </span>
             </div>
 
@@ -91,10 +92,10 @@ export default function Footer() {
 
           <div className={styles.footerBottom}>
             <p className={styles.copyright}>
-              © {new Date().getFullYear()} MalikTech. All rights reserved.
+              © {new Date().getFullYear()} MTK Codex. Lahore, PK — Remote Worldwide.
             </p>
             <p className={styles.builtWith}>
-              Built with <Heart size={14} style={{ color: 'var(--error)' }} /> using Next.js
+              Built with <Heart size={14} style={{ color: 'var(--error)' }} /> using Next.js 16 + Tailwind CSS
             </p>
           </div>
         </div>

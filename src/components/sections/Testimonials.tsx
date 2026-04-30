@@ -33,12 +33,12 @@ export default function Testimonials() {
       <div className="container">
         <ScrollReveal>
           <div className="section-header">
-            <span className="section-label">Testimonials</span>
+            <span className="section-label">Client Results</span>
             <h2>
-              What People <span className="text-gradient">Say</span>
+              What Clients <span className="text-gradient">Say</span>
             </h2>
             <p>
-              Feedback from clients and colleagues I&apos;ve had the pleasure to work with.
+              Real feedback from real clients — business owners, tournament directors, and school administrators who use these platforms daily.
             </p>
           </div>
         </ScrollReveal>

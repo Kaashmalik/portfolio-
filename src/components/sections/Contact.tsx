@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, FormEvent } from 'react';
-import { Mail, MapPin, Send, CheckCircle } from 'lucide-react';
+import { Mail, MapPin, Send, CheckCircle, Phone } from 'lucide-react';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 import styles from './Contact.module.css';
 
@@ -24,12 +24,13 @@ export default function Contact() {
           <div className="section-header">
             <span className="section-label">Get In Touch</span>
             <h2>
-              Let&apos;s Build Something{' '}
-              <span className="text-gradient">Amazing</span>
+              Let&apos;s Build Your{' '}
+              <span className="text-gradient">SaaS Platform</span>
             </h2>
             <p>
-              Have a project in mind? I&apos;d love to hear about it. Send me a message
-              and let&apos;s discuss how we can work together.
+              Whether you need a multi-tenant SaaS platform, an AI-powered feature, or a complete
+              MVP — I deliver production-ready solutions. 7 platforms shipped, 3 live in production.
+              Response guaranteed within 12 hours.
             </p>
           </div>
         </ScrollReveal>
@@ -38,10 +39,11 @@ export default function Contact() {
           <div className={styles.contactGrid}>
             <div className={styles.contactInfo}>
               <div>
-                <h3 className={styles.contactTitle}>Let&apos;s Talk</h3>
+                <h3 className={styles.contactTitle}>Get in Touch</h3>
                 <p className={styles.contactDesc}>
-                  I&apos;m currently available for freelance work and full-time opportunities.
-                  Feel free to reach out!
+                  Currently accepting new projects — multi-tenant SaaS platforms, AI integrations,
+                  cross-platform apps (web + mobile + desktop), and MVP development. I respond
+                  within 12 hours and provide detailed project estimates with timeline and cost breakdown.
                 </p>
               </div>
 
@@ -52,7 +54,17 @@ export default function Contact() {
                   </div>
                   <div>
                     <div className={styles.contactItemLabel}>Email</div>
-                    <div className={styles.contactItemValue}>hello@maliktech.dev</div>
+                    <div className={styles.contactItemValue}>kaash0542@gmail.com</div>
+                  </div>
+                </div>
+
+                <div className={styles.contactItem}>
+                  <div className={styles.contactItemIcon}>
+                    <Phone size={20} />
+                  </div>
+                  <div>
+                    <div className={styles.contactItemLabel}>WhatsApp</div>
+                    <a href="https://wa.me/923038111297" target="_blank" rel="noopener noreferrer" className={styles.contactItemValue}>+92 303 8111297</a>
                   </div>
                 </div>
 
@@ -62,7 +74,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <div className={styles.contactItemLabel}>Location</div>
-                    <div className={styles.contactItemValue}>Available Worldwide</div>
+                    <div className={styles.contactItemValue}>Lahore, PK — Remote Worldwide</div>
                   </div>
                 </div>
               </div>
@@ -70,7 +82,7 @@ export default function Contact() {
               <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-sm)' }}>
                 <span className="status-dot" />
                 <span style={{ fontSize: 'var(--font-small)', color: 'var(--text-secondary)' }}>
-                  Currently available for new projects
+                  Available 9+ hrs/day — Response within 12 hrs — Remote Worldwide
                 </span>
               </div>
             </div>

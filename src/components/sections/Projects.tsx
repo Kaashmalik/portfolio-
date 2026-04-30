@@ -15,9 +15,13 @@ function GithubIcon({ size = 16 }: { size?: number }) {
 }
 
 const projectEmojis: Record<string, string> = {
-  'cricket-saas': '🏏',
-  'mobile-app': '📱',
-  'portfolio-site': '🌐',
+  'laraibcreative': '',
+  'shakir-super-league': '',
+  'mtk-dairy': '',
+  'mtk-edu': '',
+  'instalease': '',
+  'mtk-alertpro': '',
+  'mtk-download-manager': '',
 };
 
 export default function Projects() {
@@ -26,14 +30,14 @@ export default function Projects() {
       <div className="container">
         <ScrollReveal>
           <div className="section-header">
-            <span className="section-label">Featured Projects</span>
+            <span className="section-label">Production Platforms</span>
             <h2>
-              Work That I&apos;m{' '}
-              <span className="text-gradient">Proud Of</span>
+              7 SaaS Platforms{' '}
+              <span className="text-gradient">In Production</span>
             </h2>
             <p>
-              Each project is a case study in solving real-world problems with
-              modern technology and clean architecture.
+              Every project below is a real, deployed platform with live users and revenue — not a demo.
+              Multi-tenant architecture, AI integration, payment systems, and cross-platform delivery.
             </p>
           </div>
         </ScrollReveal>

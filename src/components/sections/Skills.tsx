@@ -1,6 +1,6 @@
 'use client';
 
-import { Monitor, Server, Smartphone, Database } from 'lucide-react';
+import { Monitor, Server, Zap, Database } from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 import { skillCategories } from '@/data/skills';
@@ -9,7 +9,7 @@ import styles from './Skills.module.css';
 const iconMap: Record<string, React.ElementType> = {
   Monitor,
   Server,
-  Smartphone,
+  Zap,
   Database,
 };
 
@@ -58,12 +58,13 @@ export default function Skills() {
           <div className="section-header">
             <span className="section-label">Skills & Expertise</span>
             <h2>
-              Technologies I{' '}
-              <span className="text-gradient">Work With</span>
+              Full-Stack Arsenal{' '}
+              <span className="text-gradient">For Production SaaS</span>
             </h2>
             <p>
-              Specialized in modern full-stack development with a focus on scalable,
-              production-grade applications.
+              Every skill is battle-tested across 7 production platforms — from Next.js + TypeScript
+              frontends to NestJS/Laravel backends, PostgreSQL with RLS, Redis/Kafka pipelines,
+              React Native mobile, and Electron desktop. No toy projects. Real shipped code.
             </p>
           </div>
         </ScrollReveal>

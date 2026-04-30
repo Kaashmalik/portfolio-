@@ -13,11 +13,11 @@ export default function Experience() {
           <div className="section-header">
             <span className="section-label">Experience</span>
             <h2>
-              My Professional{' '}
-              <span className="text-gradient">Journey</span>
+              Track Record of{' '}
+              <span className="text-gradient">Shipped Products</span>
             </h2>
             <p>
-              A timeline of my career, showcasing roles and key achievements along the way.
+              Every role is measured by platforms delivered and users served — not job titles.
             </p>
           </div>
         </ScrollReveal>

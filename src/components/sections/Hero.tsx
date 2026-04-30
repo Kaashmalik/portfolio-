@@ -24,41 +24,41 @@ export default function Hero() {
         </p>
 
         <h1 className={styles.title}>
-          Hi, I&apos;m <span className="text-gradient">Malik</span>
+          Muhammad Kashif
           <br />
-          Full-Stack Developer
+          <span className="text-gradient">Full-Stack SaaS Architect</span>
         </h1>
 
         <p className={styles.subtitle}>
-          I build scalable SaaS platforms, real-time applications, and premium mobile
-          experiences with modern technologies like Next.js, NestJS &amp; React Native.
+          I build production-grade multi-tenant SaaS platforms across web, mobile, and desktop —
+          from e-commerce and fintech to edtech and AI security. 7 platforms shipped,
+          3 live in production, 500+ tenants served. Full-stack delivery with
+          Next.js, NestJS, Laravel, React Native, and Electron.
         </p>
 
         <div className={styles.heroCtas}>
-          <a href="#projects" className="btn btn-primary">
+          <a href="#contact" className="btn btn-primary">
             <ExternalLink size={18} />
-            View My Work
+            Hire Me
           </a>
-          <a
-            href="https://github.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn-secondary"
-          >
+          <a href="#projects" className="btn btn-secondary">
             <GithubIcon size={18} />
-            GitHub
+            View My Work
           </a>
         </div>
 
         <div className={styles.heroMeta}>
           <div className={styles.metaItem}>
-            <span className={styles.metaValue}>3+</span> Years Experience
+            <span className={styles.metaValue}>7</span> SaaS Platforms
           </div>
           <div className={styles.metaItem}>
-            <span className={styles.metaValue}>10+</span> Projects Delivered
+            <span className={styles.metaValue}>3</span> Live in Production
           </div>
           <div className={styles.metaItem}>
-            <span className={styles.metaValue}>5+</span> Happy Clients
+            <span className={styles.metaValue}>500+</span> Tenants Served
+          </div>
+          <div className={styles.metaItem}>
+            <span className={styles.metaValue}>9+</span> Hrs/Day Available
           </div>
         </div>
       </div>

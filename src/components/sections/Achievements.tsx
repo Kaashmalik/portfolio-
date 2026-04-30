@@ -7,10 +7,10 @@ import ScrollReveal from '@/components/ui/ScrollReveal';
 import styles from './Achievements.module.css';
 
 const stats = [
-  { id: 1, label: 'Projects Completed', value: 25, icon: Award, suffix: '+' },
-  { id: 2, label: 'Happy Clients', value: 15, icon: Users, suffix: '+' },
-  { id: 3, label: 'Lines of Code', value: 100, icon: Code, suffix: 'k+' },
-  { id: 4, label: 'Lighthouse Score', value: 99, icon: Zap, suffix: '' },
+  { id: 1, label: 'SaaS Platforms Shipped', value: 7, icon: Award, suffix: '' },
+  { id: 2, label: 'Tenants in Production', value: 500, icon: Users, suffix: '+' },
+  { id: 3, label: 'API Endpoints Built', value: 200, icon: Code, suffix: '+' },
+  { id: 4, label: 'Lighthouse Score', value: 95, icon: Zap, suffix: '+' },
 ];
 
 function AnimatedCounter({ value, suffix, isVisible }: { value: number; suffix: string; isVisible: boolean }) {
@@ -51,12 +51,12 @@ export default function Achievements() {
       <div className="container">
         <ScrollReveal>
           <div className="section-header">
-            <span className="section-label">Achievements</span>
+            <span className="section-label">Impact</span>
             <h2>
-              By The <span className="text-gradient">Numbers</span>
+              Real Numbers, <span className="text-gradient">Real Platforms</span>
             </h2>
             <p>
-              A quick look at the impact and scale of my work over the years.
+              Not hypothetical metrics — these are actual production numbers from platforms serving real users and generating real revenue.
             </p>
           </div>
         </ScrollReveal>

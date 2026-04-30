@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   try {
     const post = getPostBySlug(slug);
     return {
-      title: `${post.title} | MalikTech Blog`,
+      title: `${post.title} | MTK Codex Blog`,
       description: post.summary,
     };
   } catch (e) {
