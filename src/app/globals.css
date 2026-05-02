@@ -29,6 +29,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+@media (pointer: fine) {
+  body.custom-cursor-enabled, body.custom-cursor-enabled * {
+    cursor: none !important;
+  }
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -63,49 +69,54 @@ input, textarea {
 /* ---------- Design Tokens (Dark Mode — Default) ---------- */
 :root {
   /* Background Layers */
-  --bg-primary:    hsl(225, 25%, 6%);
-  --bg-secondary:  hsl(225, 20%, 10%);
-  --bg-tertiary:   hsl(225, 18%, 14%);
-  --bg-elevated:   hsl(225, 16%, 18%);
+  --bg-primary:    #0a0a0f;
+  --bg-secondary:  #0f0f16;
+  --bg-tertiary:   #12121a;
+  --bg-elevated:   #1a1a25;
 
   /* Text */
-  --text-primary:   hsl(0, 0%, 95%);
-  --text-secondary: hsl(220, 10%, 65%);
-  --text-muted:     hsl(220, 10%, 45%);
+  --text-primary:   #e2e8f0;
+  --text-secondary:#a0aec0;
+  --text-muted:     #64748b;
 
-  /* Accent Gradient */
-  --accent-start:   hsl(260, 85%, 65%);
-  --accent-mid:     hsl(230, 80%, 60%);
-  --accent-end:     hsl(200, 90%, 55%);
-  --accent-gradient: linear-gradient(135deg, var(--accent-start), var(--accent-mid), var(--accent-end));
-  --accent-gradient-hover: linear-gradient(135deg, var(--accent-end), var(--accent-mid), var(--accent-start));
+  /* Accent Palette */
+  --accent-cyan:    #00ffff;
+  --accent-purple:  #a855f7;
+  --accent-amber:   #f59e0b;
+  --accent-gradient: linear-gradient(120deg, var(--accent-cyan), var(--accent-purple));
+  --accent-gradient-hover: linear-gradient(120deg, var(--accent-purple), var(--accent-cyan));
 
-  /* Glass */
-  --glass-bg:       rgba(255, 255, 255, 0.04);
+  /* Legacy aliases — keeps every component visible */
+  --accent-start: var(--accent-cyan);
+  --accent-mid:   var(--accent-purple);
+  --accent-end:   var(--accent-amber);
+
+  /* Glass / Brutalist Panels */
+  --glass-bg:       rgba(255, 255, 255, 0.03);
   --glass-bg-hover: rgba(255, 255, 255, 0.08);
-  --glass-border:   rgba(255, 255, 255, 0.08);
-  --glass-border-hover: rgba(255, 255, 255, 0.15);
-  --glass-blur:     16px;
-  --glass-shadow:   0 8px 32px rgba(0, 0, 0, 0.4);
+  --glass-border:   rgba(148, 163, 184, 0.2);
+  --glass-border-hover: rgba(255, 255, 255, 0.35);
+  --glass-blur:     18px;
+  --glass-shadow:   0 15px 45px rgba(0, 0, 0, 0.55);
 
   /* Semantic Colors */
-  --success:  hsl(150, 70%, 45%);
-  --warning:  hsl(40, 90%, 55%);
-  --error:    hsl(0, 75%, 55%);
-  --info:     hsl(200, 80%, 55%);
+  --success:  #22c55e;
+  --warning:  #f59e0b;
+  --error:    #f87171;
+  --info:     #38bdf8;
 
   /* Glow */
-  --glow-primary: 0 0 30px rgba(124, 88, 255, 0.15);
-  --glow-accent:  0 0 60px rgba(124, 88, 255, 0.1);
+  --glow-primary: 0 0 40px rgba(0, 255, 255, 0.35);
+  --glow-accent:  0 0 60px rgba(168, 85, 247, 0.35);
 
   /* Typography */
-  --font-sans: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
-  --font-mono: var(--font-geist-mono), 'JetBrains Mono', monospace;
+  --font-sans: var(--font-syne), "Syne", system-ui, sans-serif;
+  --font-mono: var(--font-space-mono), "Space Mono", "IBM Plex Mono", monospace;
 
-  --font-display: clamp(2.75rem, 5vw + 1rem, 5.5rem);
-  --font-h1:      clamp(2rem, 3vw + 0.5rem, 3.5rem);
-  --font-h2:      clamp(1.5rem, 2vw + 0.5rem, 2.25rem);
-  --font-h3:      clamp(1.125rem, 1.5vw, 1.5rem);
+  --font-display: clamp(3rem, 6vw + 1rem, 6rem);
+  --font-h1:      clamp(2.5rem, 4vw, 4rem);
+  --font-h2:      clamp(1.75rem, 3vw, 2.75rem);
+  --font-h3:      clamp(1.25rem, 2vw, 1.75rem);
   --font-body:    clamp(0.95rem, 1vw, 1.125rem);
   --font-small:   clamp(0.8rem, 0.9vw, 0.875rem);
   --font-code:    0.875rem;
@@ -128,10 +139,13 @@ input, textarea {
   --section-pad-x: var(--space-lg);
 
   /* Borders */
-  --radius-sm:  8px;
-  --radius-md:  12px;
-  --radius-lg:  16px;
-  --radius-xl:  24px;
+  --radius-sm:   8px;
+  --radius-md:   12px;
+  --radius-lg:   16px;
+  --radius-xl:   24px;
+  --radius-2xl:  32px;
+  --radius-3xl:  40px;
+  --radius-4xl:  48px;
   --radius-full: 9999px;
 
   /* Transitions */
@@ -144,23 +158,31 @@ input, textarea {
 
 /* ---------- Light Mode ---------- */
 [data-theme="light"] {
-  --bg-primary:    hsl(220, 20%, 97%);
-  --bg-secondary:  hsl(220, 15%, 93%);
-  --bg-tertiary:   hsl(220, 12%, 89%);
-  --bg-elevated:   hsl(0, 0%, 100%);
+  --bg-primary:    #f8fafc;
+  --bg-secondary:  #f1f5f9;
+  --bg-tertiary:   #e2e8f0;
+  --bg-elevated:   #ffffff;
 
-  --text-primary:   hsl(225, 25%, 10%);
-  --text-secondary: hsl(220, 12%, 40%);
-  --text-muted:     hsl(220, 10%, 55%);
+  --text-primary:   #0f172a;
+  --text-secondary: #334155;
+  --text-muted:     #64748b;
 
-  --glass-bg:       rgba(255, 255, 255, 0.55);
-  --glass-bg-hover: rgba(255, 255, 255, 0.75);
-  --glass-border:   rgba(0, 0, 0, 0.06);
-  --glass-border-hover: rgba(0, 0, 0, 0.12);
-  --glass-shadow:   0 8px 32px rgba(0, 0, 0, 0.08);
+  --glass-bg:       rgba(15, 23, 42, 0.04);
+  --glass-bg-hover: rgba(15, 23, 42, 0.08);
+  --glass-border:   rgba(15, 23, 42, 0.1);
+  --glass-border-hover: rgba(15, 23, 42, 0.18);
+  --glass-shadow:   0 15px 40px rgba(15, 23, 42, 0.15);
 
-  --glow-primary: 0 0 30px rgba(124, 88, 255, 0.08);
-  --glow-accent:  0 0 60px rgba(124, 88, 255, 0.05);
+  --glow-primary: 0 0 35px rgba(0, 255, 255, 0.15);
+  --glow-accent:  0 0 45px rgba(168, 85, 247, 0.15);
+
+  /* Light-mode accent overrides for readability */
+  --accent-cyan:   #0891b2;
+  --accent-purple: #7c3aed;
+  --accent-amber:  #d97706;
+  --accent-start:  var(--accent-cyan);
+  --accent-mid:    var(--accent-purple);
+  --accent-end:    var(--accent-amber);
 }
 
 /* ---------- Typography ---------- */

@@ -6,8 +6,8 @@ import styles from './Footer.module.css';
 
 const navItems = [
   { label: 'About', href: '#about' },
-  { label: 'Skills', href: '#skills' },
   { label: 'Projects', href: '#projects' },
+  { label: 'Services', href: '#services' },
   { label: 'Experience', href: '#experience' },
   { label: 'Contact', href: '#contact' },
 ];
@@ -31,7 +31,7 @@ function LinkedinIcon({ size = 18 }: { size?: number }) {
 
 const socialLinks = [
   { label: 'GitHub', href: 'https://github.com/Kaashmalik', icon: GithubIcon },
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/malik-kashif-15022b294/', icon: LinkedinIcon },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/muhammadkashif-mtkcodex', icon: LinkedinIcon },
   { label: 'WhatsApp', href: 'https://wa.me/923038111297', icon: () => <Phone size={18} /> },
   { label: 'Email', href: 'mailto:kaash0542@gmail.com', icon: () => <Mail size={18} /> },
 ];

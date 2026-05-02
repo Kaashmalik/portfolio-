@@ -1,26 +1,24 @@
 .experience {
   padding: var(--section-pad-y) var(--section-pad-x);
-  background: var(--bg-secondary);
 }
 
 .timeline {
   position: relative;
-  max-width: 700px;
+  max-width: 760px;
   margin: 0 auto;
-  padding-left: var(--space-2xl);
+  padding-left: var(--space-3xl);
 }
 
-.timeline::before {
-  content: '';
+.timelineLine {
   position: absolute;
-  left: 8px;
+  left: 17px;
   top: 0;
   bottom: 0;
   width: 2px;
   background: linear-gradient(
     to bottom,
-    var(--accent-start),
-    var(--accent-end),
+    var(--accent-cyan),
+    var(--accent-purple),
     transparent
   );
 }
@@ -36,26 +34,35 @@
 
 .timelineDot {
   position: absolute;
-  left: calc(-1 * var(--space-2xl) + 2px);
-  top: 6px;
-  width: 14px;
-  height: 14px;
+  left: calc(-1 * var(--space-3xl) + 4px);
+  top: var(--space-xl);
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
-  background: var(--accent-gradient);
-  box-shadow: 0 0 0 4px var(--bg-secondary), 0 0 20px rgba(124, 88, 255, 0.3);
+  background: rgba(0, 255, 255, 0.12);
+  border: 2px solid var(--accent-cyan);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-cyan);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+  z-index: 1;
 }
 
 .timelineCard {
   padding: var(--space-xl);
-  border-radius: var(--radius-lg);
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  transition: all var(--duration-normal) var(--ease-out);
+  border-radius: var(--radius-2xl);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(12, 12, 18, 0.9);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  transition: border-color var(--duration-normal) var(--ease-out);
 }
 
 .timelineCard:hover {
-  border-color: var(--glass-border-hover);
-  background: var(--glass-bg-hover);
+  border-color: rgba(0, 255, 255, 0.2);
 }
 
 .timelineHeader {
@@ -63,8 +70,16 @@
   align-items: flex-start;
   justify-content: space-between;
   gap: var(--space-md);
-  margin-bottom: var(--space-md);
   flex-wrap: wrap;
+}
+
+.typeLabel {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--accent-cyan);
+  margin-bottom: var(--space-xs);
 }
 
 .role {
@@ -75,32 +90,34 @@
 
 .company {
   font-size: var(--font-body);
-  color: var(--accent-start);
+  color: var(--text-secondary);
   font-weight: 500;
+  margin-top: var(--space-xs);
 }
 
 .periodBadge {
   display: inline-flex;
   align-items: center;
   gap: var(--space-xs);
-  font-size: var(--font-small);
+  font-size: 0.8rem;
   font-family: var(--font-mono);
   color: var(--text-muted);
   white-space: nowrap;
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
 }
 
 .description {
-  font-size: var(--font-body);
   color: var(--text-secondary);
-  margin-bottom: var(--space-md);
-  line-height: 1.7;
+  line-height: 1.8;
 }
 
 .achievements {
   display: flex;
   flex-direction: column;
   gap: var(--space-sm);
-  margin-bottom: var(--space-md);
 }
 
 .achievement {
@@ -109,16 +126,42 @@
   gap: var(--space-sm);
   font-size: var(--font-small);
   color: var(--text-secondary);
+  line-height: 1.6;
 }
 
-.achievementIcon {
-  color: var(--success);
-  margin-top: 2px;
+.achievement svg {
+  color: var(--accent-cyan);
+  margin-top: 3px;
   flex-shrink: 0;
 }
 
 .techTags {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-sm);
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+.techTags span {
+  padding: 0.35rem 0.8rem;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 640px) {
+  .timeline {
+    padding-left: var(--space-2xl);
+  }
+
+  .timelineDot {
+    left: calc(-1 * var(--space-2xl) + 4px);
+    width: 22px;
+    height: 22px;
+  }
+
+  .timelineLine {
+    left: 14px;
+  }
 }

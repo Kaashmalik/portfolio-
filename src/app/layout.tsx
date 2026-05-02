@@ -1,18 +1,23 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Syne, Space_Mono } from "next/font/google";
 import { ThemeProvider } from "@/hooks/useTheme";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import CustomCursor from "@/components/ui/CustomCursor";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const syne = Syne({
+  variable: "--font-syne",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const spaceMono = Space_Mono({
+  variable: "--font-space-mono",
   subsets: ["latin"],
+  weight: ["400", "700"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -69,7 +74,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${syne.variable} ${spaceMono.variable}`} suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{
@@ -92,10 +97,10 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Person",
-              "@id": "https://mtkcodex.site/#person",
+              "@id": "https://pf.mtkcodex.site/#person",
               "name": "Muhammad Kashif",
               "jobTitle": "Full-Stack SaaS Architect",
-              "url": "https://mtkcodex.site",
+              "url": "https://pf.mtkcodex.site",
               "knowsAbout": [
                 "Next.js",
                 "TypeScript",
@@ -115,7 +120,7 @@ export default function RootLayout({
               ],
               "sameAs": [
                 "https://github.com/Kaashmalik",
-                "https://www.linkedin.com/in/malik-kashif-15022b294/",
+                "https://www.linkedin.com/in/muhammadkashif-mtkcodex",
               ],
             }),
           }}
@@ -129,6 +134,7 @@ export default function RootLayout({
           <Navbar />
           <main id="main-content">{children}</main>
           <Footer />
+          <CustomCursor />
         </ThemeProvider>
       </body>
     </html>

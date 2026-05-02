@@ -1,0 +1,71 @@
+.cursor,
+.cursorRing {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate3d(-50%, -50%, 0);
+  mix-blend-mode: difference;
+  opacity: 1;
+  transition: opacity 0.35s ease;
+}
+
+.cursor {
+  border-radius: 50%;
+  background: var(--accent-cyan);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+}
+
+.cursorRing {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid rgba(226, 232, 240, 0.65);
+  transition:
+    opacity 0.35s ease,
+    border-color 0.3s ease,
+    transform 0.2s ease,
+    width 0.2s ease,
+    height 0.2s ease;
+  mix-blend-mode: difference;
+  box-shadow: 0 0 30px rgba(168, 85, 247, 0.25);
+}
+
+.hidden {
+  opacity: 0;
+}
+
+.active.cursor,
+.active.cursorRing {
+  transform: scale(0.85) translate3d(var(--cursor-x), var(--cursor-y), 0);
+}
+
+.interactive.cursorRing {
+  border-color: var(--accent-purple);
+  width: 65px;
+  height: 65px;
+  box-shadow: 0 0 40px rgba(168, 85, 247, 0.35);
+}
+
+.interactive.cursor {
+  transform: scale(0.5) translate3d(var(--cursor-x), var(--cursor-y), 0);
+  background: var(--accent-purple);
+}
+
+.cursor {
+  transform: translate3d(var(--cursor-x, -50%), var(--cursor-y, -50%), 0);
+}
+
+.cursorRing {
+  transform: translate3d(var(--cursor-x, -50%), var(--cursor-y, -50%), 0);
+}
+
+@media (pointer: coarse) {
+  .cursor,
+  .cursorRing {
+    display: none;
+  }
+}

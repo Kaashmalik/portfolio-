@@ -1,30 +1,18 @@
 'use client';
 
-import Link from 'next/link';
-import { ExternalLink, CheckCircle2, ArrowRight } from 'lucide-react';
+import { useMemo, useState } from 'react';
+import { ExternalLink, ArrowRight, X, CheckCircle2 } from 'lucide-react';
 import ScrollReveal from '@/components/ui/ScrollReveal';
+import type { Project } from '@/data/projects';
 import { projects } from '@/data/projects';
 import styles from './Projects.module.css';
 
-function GithubIcon({ size = 16 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
-    </svg>
-  );
-}
-
-const projectEmojis: Record<string, string> = {
-  'laraibcreative': '',
-  'shakir-super-league': '',
-  'mtk-dairy': '',
-  'mtk-edu': '',
-  'instalease': '',
-  'mtk-alertpro': '',
-  'mtk-download-manager': '',
-};
-
 export default function Projects() {
+  const featuredProjects = useMemo(() => projects.filter((project) => project.featured), []);
+  const heroProject = featuredProjects[0];
+  const gridProjects = featuredProjects.slice(1);
+  const [activeProject, setActiveProject] = useState<Project | null>(null);
+
   return (
     <section className={styles.projects} id="projects" aria-label="Projects">
       <div className="container">
@@ -32,88 +20,173 @@ export default function Projects() {
           <div className="section-header">
             <span className="section-label">Production Platforms</span>
             <h2>
-              7 SaaS Platforms{' '}
-              <span className="text-gradient">In Production</span>
+              7 Shipped Platforms{' '}
+              <span className="text-gradient">Serving Real Clients</span>
             </h2>
             <p>
-              Every project below is a real, deployed platform with live users and revenue — not a demo.
-              Multi-tenant architecture, AI integration, payment systems, and cross-platform delivery.
+              From fintech to agri-tech, every platform below is deployed with paying tenants, AI integrations,
+              and full multi-tenant infrastructure.
             </p>
           </div>
         </ScrollReveal>
 
+        {heroProject && (
+          <ScrollReveal>
+            <FeaturedProject project={heroProject} onOpenCaseStudy={setActiveProject} />
+          </ScrollReveal>
+        )}
+
         <div className={styles.projectsGrid}>
-          {projects.filter((p) => p.featured).map((project) => (
+          {gridProjects.map((project) => (
             <ScrollReveal key={project.id}>
-              <article className={styles.projectCard}>
-                <div className={styles.projectImage}>
-                  <div className={styles.projectImagePlaceholder}>
-                    {projectEmojis[project.id] || '🚀'}
-                  </div>
-                  <span className={`badge badge-accent ${styles.projectCategory}`}>
-                    {project.category}
-                  </span>
-                </div>
-
-                <div className={styles.projectInfo}>
-                  <h3 className={styles.projectTitle}>{project.title}</h3>
-                  <p className={styles.projectDesc}>{project.description}</p>
-
-                  <div className={styles.projectTech}>
-                    {project.techStack.map((tech) => (
-                      <span key={tech} className="badge">{tech}</span>
-                    ))}
-                  </div>
-
-                  <div className={styles.projectHighlights}>
-                    {project.highlights.map((hl) => (
-                      <div key={hl} className={styles.highlight}>
-                        <CheckCircle2 size={14} className={styles.highlightIcon} />
-                        <span>{hl}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className={styles.projectLinks}>
-                    <Link
-                      href={`/projects/${project.id}`}
-                      className="btn btn-primary"
-                      style={{ padding: '0.5rem 1.25rem', fontSize: 'var(--font-small)' }}
-                    >
-                      Case Study
-                      <ArrowRight size={16} />
-                    </Link>
-                    {project.liveUrl && (
-                      <a
-                        href={project.liveUrl}
-                        className="btn btn-secondary"
-                        style={{ padding: '0.5rem 1.25rem', fontSize: 'var(--font-small)' }}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <ExternalLink size={16} />
-                        Live Demo
-                      </a>
-                    )}
-                    {project.githubUrl && (
-                      <a
-                        href={project.githubUrl}
-                        className="btn btn-secondary"
-                        style={{ padding: '0.5rem 1.25rem', fontSize: 'var(--font-small)' }}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <GithubIcon size={16} />
-                        Source Code
-                      </a>
-                    )}
-                  </div>
-                </div>
-              </article>
+              <ProjectCard project={project} onOpenCaseStudy={setActiveProject} />
             </ScrollReveal>
           ))}
         </div>
       </div>
+
+      {activeProject && (
+        <CaseStudyModal project={activeProject} onClose={() => setActiveProject(null)} />
+      )}
     </section>
+  );
+}
+
+function FeaturedProject({ project, onOpenCaseStudy }: { project: Project; onOpenCaseStudy: (project: Project) => void; }) {
+  return (
+    <section className={styles.featured}>
+      <div className={styles.featuredVisual}>
+        <div className={styles.featuredBadge}>{project.category}</div>
+        <div className={styles.featuredImage} style={{ backgroundImage: `url(${project.image})` }} />
+      </div>
+      <div className={styles.featuredContent}>
+        <p className={styles.featuredLabel}>Flagship Platform</p>
+        <h3>{project.title}</h3>
+        <p>{project.description}</p>
+        <div className={styles.featuredStats}>
+          <div>
+            <span>{project.highlights.length}</span>
+            <p>Key Modules</p>
+          </div>
+          <div>
+            <span>{project.techStack.length}</span>
+            <p>Technologies</p>
+          </div>
+          <div>
+            <span>24/7</span>
+            <p>Production Support</p>
+          </div>
+        </div>
+        <div className={styles.featuredCtas}>
+          <button className={styles.primaryButton} onClick={() => onOpenCaseStudy(project)}>
+            <ArrowRight size={16} /> Case Study
+          </button>
+          {project.liveUrl && (
+            <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className={styles.ghostButton}>
+              <ExternalLink size={16} /> Live Demo
+            </a>
+          )}
+          {project.githubUrl && (
+            <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className={styles.ghostButton}>
+              <GithubIcon size={16} /> Source
+            </a>
+          )}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ProjectCard({ project, onOpenCaseStudy }: { project: Project; onOpenCaseStudy: (project: Project) => void; }) {
+  return (
+    <article className={styles.projectCard}>
+      <div className={styles.cardHeader}>
+        <span className={styles.cardCategory}>{project.category}</span>
+        <h3>{project.title}</h3>
+      </div>
+      <p>{project.description}</p>
+      <div className={styles.cardTech}>
+        {project.techStack.slice(0, 6).map((tech) => (
+          <span key={tech}>{tech}</span>
+        ))}
+        {project.techStack.length > 6 && <span>+{project.techStack.length - 6} more</span>}
+      </div>
+      <div className={styles.cardHighlights}>
+        {project.highlights.slice(0, 3).map((highlight) => (
+          <div key={highlight}>
+            <CheckCircle2 size={16} />
+            <span>{highlight}</span>
+          </div>
+        ))}
+      </div>
+      <div className={styles.cardCtas}>
+        <button onClick={() => onOpenCaseStudy(project)}>
+          Case Study <ArrowRight size={14} />
+        </button>
+        {project.liveUrl && (
+          <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+            <ExternalLink size={14} /> Live
+          </a>
+        )}
+        {project.githubUrl && (
+          <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+            <GithubIcon size={14} /> Code
+          </a>
+        )}
+      </div>
+    </article>
+  );
+}
+
+function CaseStudyModal({ project, onClose }: { project: Project; onClose: () => void }) {
+  return (
+    <div className={styles.modalOverlay}>
+      <div className={styles.modalContent} role="dialog" aria-modal="true">
+        <button className={styles.modalClose} onClick={onClose} aria-label="Close case study">
+          <X size={18} />
+        </button>
+        <p className={styles.modalLabel}>Case Study</p>
+        <h3>{project.title}</h3>
+        <p className={styles.modalCategory}>{project.category}</p>
+        <p className={styles.modalDesc}>{project.longDescription}</p>
+        <div className={styles.modalHighlights}>
+          {project.highlights.map((highlight) => (
+            <div key={highlight}>
+              <CheckCircle2 size={16} />
+              <span>{highlight}</span>
+            </div>
+          ))}
+        </div>
+        <div className={styles.modalMeta}>
+          <div>
+            <span>Tech Stack</span>
+            <p>{project.techStack.join(' · ')}</p>
+          </div>
+          <div>
+            <span>Links</span>
+            <div className={styles.modalLinks}>
+              {project.liveUrl && (
+                <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                  <ExternalLink size={14} /> Live Demo
+                </a>
+              )}
+              {project.githubUrl && (
+                <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                  <GithubIcon size={14} /> Source
+                </a>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function GithubIcon({ size = 16 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12 .5C5.648.5.5 5.648.5 12c0 5.089 3.292 9.397 7.858 10.915.575.105.785-.25.785-.555 0-.274-.011-1.188-.016-2.156-3.2.696-3.877-1.54-3.877-1.54-.523-1.33-1.278-1.685-1.278-1.685-1.045-.715.079-.701.079-.701 1.155.082 1.763 1.186 1.763 1.186 1.028 1.763 2.698 1.254 3.355.959.103-.745.402-1.255.73-1.542-2.554-.291-5.237-1.278-5.237-5.685 0-1.255.448-2.282 1.183-3.086-.118-.29-.513-1.46.112-3.043 0 0 .967-.31 3.17 1.178a10.978 10.978 0 0 1 2.886-.389c.979.005 1.966.133 2.886.389 2.202-1.488 3.167-1.178 3.167-1.178.627 1.583.233 2.753.115 3.043.737.804 1.181 1.831 1.181 3.086 0 4.418-2.689 5.39-5.256 5.675.414.356.783 1.057.783 2.132 0 1.54-.015 2.778-.015 3.156 0 .309.207.666.79.553C20.213 21.392 23.5 17.084 23.5 12c0-6.352-5.148-11.5-11.5-11.5Z" />
+    </svg>
   );
 }

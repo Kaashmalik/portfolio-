@@ -2,110 +2,266 @@
   padding: var(--section-pad-y) var(--section-pad-x);
 }
 
-.aboutGrid {
+.layout {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-3xl);
-  align-items: center;
+  align-items: start;
 }
 
-@media (min-width: 768px) {
-  .aboutGrid {
-    grid-template-columns: 300px 1fr;
+@media (min-width: 1024px) {
+  .layout {
+    grid-template-columns: 360px 1fr;
   }
 }
 
-.imageWrapper {
-  position: relative;
-  width: 260px;
-  height: 300px;
-  margin: 0 auto;
+.profileColumn {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
 }
 
-.imageBorder {
-  position: absolute;
-  inset: -4px;
+.terminalCard {
   border-radius: var(--radius-xl);
-  background: var(--accent-gradient);
-  opacity: 0.6;
-  z-index: 0;
-}
-
-.avatarPlaceholder {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  border-radius: var(--radius-xl);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   background: var(--bg-tertiary);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+}
+
+.terminalHeader,
+.terminalFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.terminalDots {
+  display: inline-flex;
+  gap: 6px;
+}
+
+.terminalDots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--accent-cyan);
+}
+
+.terminalDots span:nth-child(2) {
+  background: var(--accent-amber);
+}
+
+.terminalDots span:nth-child(3) {
+  background: var(--accent-purple);
+}
+
+.terminalPath {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.avatarFrame {
+  height: 320px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 5rem;
-  z-index: 1;
-  overflow: hidden;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.6), rgba(10, 10, 15, 0.95));
+  letter-spacing: 0.1em;
 }
 
-.aboutContent {
+.availabilityCard {
+  padding: var(--space-lg);
+  border-radius: var(--radius-lg);
+  border: 1px dashed rgba(0, 255, 255, 0.35);
+  background: rgba(0, 255, 255, 0.08);
+  color: var(--text-primary);
+  font-family: var(--font-mono);
   display: flex;
   flex-direction: column;
-  gap: var(--space-lg);
-}
-
-.aboutText {
-  color: var(--text-secondary);
-  font-size: var(--font-body);
-  line-height: 1.8;
-}
-
-.aboutText strong {
-  color: var(--text-primary);
-  font-weight: 600;
+  gap: var(--space-xs);
 }
 
 .aboutCards {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: var(--space-md);
-  margin-top: var(--space-md);
 }
 
 .aboutCard {
-  padding: var(--space-lg);
+  display: flex;
+  gap: var(--space-sm);
+  padding: var(--space-md);
   border-radius: var(--radius-md);
   background: var(--glass-bg);
   border: 1px solid var(--glass-border);
-  transition: all var(--duration-normal) var(--ease-out);
-}
-
-.aboutCard:hover {
-  border-color: var(--glass-border-hover);
-  background: var(--glass-bg-hover);
 }
 
 .aboutCardIcon {
-  color: var(--accent-start);
-  margin-bottom: var(--space-sm);
+  color: var(--accent-amber);
 }
 
 .aboutCardTitle {
-  font-size: var(--font-small);
-  font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: var(--space-xs);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.18em;
 }
 
 .aboutCardValue {
-  font-size: var(--font-small);
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.tagList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
   color: var(--text-secondary);
 }
 
-.resumeBtn {
-  margin-top: var(--space-md);
-  align-self: flex-start;
+.contentColumn {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xl);
 }
 
-@media (max-width: 480px) {
-  .aboutCards {
-    grid-template-columns: 1fr;
+.aboutCopy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  color: var(--text-secondary);
+  line-height: 1.9;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--space-md);
+}
+
+.statCard {
+  padding: 1.5rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(10, 10, 15, 0.7);
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.35);
+}
+
+.statValue {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.statLabel {
+  display: block;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--text-muted);
+  margin-top: 0.35rem;
+}
+
+.statCard p {
+  margin-top: 0.4rem;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.skillSegments {
+  padding: var(--space-xl);
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(18, 18, 26, 0.85);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+.skillSegmentsHeader {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-lg);
+}
+
+.skillRow {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-md);
+}
+
+.skillMeta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+}
+
+.skillBar {
+  width: 100%;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+}
+
+.skillBarFill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
+  transition: width 1s var(--ease-out);
+}
+
+.ctaRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+}
+
+.ghostButton,
+.primaryChip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 0.85rem 1.5rem;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.ghostButton {
+  border: 1px dashed rgba(255, 255, 255, 0.3);
+  color: var(--text-secondary);
+}
+
+.primaryChip {
+  border: 1px solid rgba(0, 255, 255, 0.4);
+  background: rgba(0, 255, 255, 0.08);
+  color: var(--text-primary);
+}
+
+@media (max-width: 640px) {
+  .skillSegments {
+    padding: var(--space-lg);
+  }
+
+  .ctaRow {
+    flex-direction: column;
   }
 }
