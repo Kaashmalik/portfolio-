@@ -80,7 +80,7 @@ export default function Hero() {
           <a href="#projects" className={`${styles.cta} ${styles.ctaPrimary}`}>
             <ExternalLink size={18} /> View Projects
           </a>
-          <a href="/documents/Muhammad-Kashif-CV.pdf" className={`${styles.cta} ${styles.ctaGhost}`} target="_blank" rel="noopener noreferrer">
+          <a href="/documents/Muhammad-Kashif-CV.pdf" className={`${styles.cta} ${styles.ctaGhost}`} target="_blank" rel="noopener noreferrer" download>
             <Download size={18} /> Download CV
           </a>
         </div>
