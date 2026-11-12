@@ -84,7 +84,7 @@ export default function Hero() {
           <a href="#projects" className={`${styles.cta} ${styles.ctaGhost}`}>
             See 7 Platforms
           </a>
-          <a href="/documents/Muhammad-Kashif-CV.pdf" className={`${styles.cta} ${styles.ctaGhost}`} target="_blank" rel="noopener noreferrer">
+          <a href="/documents/Muhammad-Kashif-CV.pdf" className={`${styles.cta} ${styles.ctaGhost}`} target="_blank" rel="noopener noreferrer" download>
             <Download size={18} /> CV
           </a>
         </div>
