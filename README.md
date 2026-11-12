@@ -47,7 +47,6 @@ npm run dev     # http://localhost:3000
 | `src/data/projects.ts` | Projects, case studies, accents, demo links |
 | `src/data/experience.ts` | Roles and achievements |
 | `src/data/skills.ts` | Skill groups and levels |
-| `src/data/testimonials.ts` | Client quotes |
 | `content/blog/*.mdx` | Blog posts |
 | `scripts/cv.html` | Source for the generated CV PDF |
 | `scripts/linkedin-playbook.html` | Source for the LinkedIn playbook PDF |

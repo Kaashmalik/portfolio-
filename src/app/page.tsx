@@ -5,7 +5,6 @@ import Projects from "@/components/sections/Projects";
 import WhyHire from "@/components/sections/WhyHire";
 import Experience from "@/components/sections/Experience";
 import Services from "@/components/sections/Services";
-import Testimonials from "@/components/sections/Testimonials";
 import Contact from "@/components/sections/Contact";
 
 export default function Home() {
@@ -34,9 +33,6 @@ export default function Home() {
 
       <div className="divider" />
       <Services />
-
-      <div className="divider" />
-      <Testimonials />
 
       <div className="divider" />
       <Contact />
