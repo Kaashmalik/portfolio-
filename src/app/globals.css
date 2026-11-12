@@ -99,6 +99,15 @@ input, textarea {
   --glass-blur:     18px;
   --glass-shadow:   0 15px 45px rgba(0, 0, 0, 0.55);
 
+  /* Theme-aware card surfaces (used by section cards) */
+  --surface-card:        rgba(12, 12, 18, 0.9);
+  --surface-card-soft:   rgba(10, 10, 15, 0.7);
+  --surface-card-strong: rgba(10, 10, 15, 0.98);
+  --surface-border:        rgba(255, 255, 255, 0.08);
+  --surface-border-strong: rgba(255, 255, 255, 0.12);
+  --surface-shadow:      0 20px 40px rgba(0, 0, 0, 0.45);
+  --surface-shadow-soft: 0 20px 35px rgba(0, 0, 0, 0.35);
+
   /* Semantic Colors */
   --success:  #22c55e;
   --warning:  #f59e0b;
@@ -172,6 +181,15 @@ input, textarea {
   --glass-border:   rgba(15, 23, 42, 0.1);
   --glass-border-hover: rgba(15, 23, 42, 0.18);
   --glass-shadow:   0 15px 40px rgba(15, 23, 42, 0.15);
+
+  /* Light card surfaces */
+  --surface-card:        #ffffff;
+  --surface-card-soft:   #ffffff;
+  --surface-card-strong: #ffffff;
+  --surface-border:        rgba(15, 23, 42, 0.10);
+  --surface-border-strong: rgba(15, 23, 42, 0.16);
+  --surface-shadow:      0 18px 42px rgba(15, 23, 42, 0.10);
+  --surface-shadow-soft: 0 14px 32px rgba(15, 23, 42, 0.08);
 
   --glow-primary: 0 0 35px rgba(0, 255, 255, 0.15);
   --glow-accent:  0 0 45px rgba(168, 85, 247, 0.15);

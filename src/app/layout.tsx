@@ -21,10 +21,17 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "MTK Codex | Full-Stack SaaS Architect",
+  metadataBase: new URL("https://pf.mtkcodex.site"),
+  title: {
+    default: "Muhammad Kashif | Full-Stack SaaS Architect",
+    template: "%s | Muhammad Kashif",
+  },
   description:
-    "Full-Stack SaaS Architect with 7 production platforms across web, mobile, and desktop. Specializing in multi-tenant SaaS, AI integration, and scalable MVPs using Next.js, TypeScript, NestJS, Laravel, React Native, and Electron. Available 9+ hrs/day for remote work worldwide.",
+    "Full-Stack SaaS Architect and founder of MTK Codex. 7 production platforms across fintech, agri-tech, ed-tech, sports, e-commerce, AI security and desktop. Multi-tenant SaaS, AI integration and cross-platform delivery with Next.js, TypeScript, NestJS, Laravel, React Native and Electron.",
   keywords: [
+    "Muhammad Kashif",
+    "Malik Kashif",
+    "MTK Codex",
     "SaaS developer",
     "multi-tenant SaaS",
     "full-stack developer",
@@ -36,9 +43,11 @@ export const metadata: Metadata = {
     "NestJS",
     "Laravel",
     "AI integration",
+    "CRM developer",
     "MVP developer",
     "freelance developer",
     "Pakistan developer",
+    "Lahore developer",
     "Supabase",
     "PostgreSQL",
     "shadcn/ui",
@@ -46,26 +55,40 @@ export const metadata: Metadata = {
     "fintech developer",
     "edtech developer",
   ],
-  authors: [{ name: "Muhammad Kashif" }],
-  creator: "MTK Codex",
+  authors: [{ name: "Muhammad Kashif", url: "https://pf.mtkcodex.site" }],
+  creator: "Muhammad Kashif",
+  publisher: "MTK Codex",
+  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     locale: "en_US",
-    title: "MTK Codex | Full-Stack SaaS Architect",
+    url: "https://pf.mtkcodex.site",
+    title: "Muhammad Kashif | Full-Stack SaaS Architect",
     description:
-      "7 production SaaS platforms across e-commerce, fintech, edtech, agriculture, sports, and security. Multi-tenant architecture, AI integration, and cross-platform delivery. Available for freelance engagements worldwide.",
-    siteName: "MTK Codex",
+      "7 production SaaS platforms across fintech, agri-tech, ed-tech, sports, commerce, AI security and desktop. Available for freelance engagements worldwide.",
+    siteName: "Muhammad Kashif — MTK Codex",
+    images: [
+      {
+        url: "/images/og/og-cover.png",
+        width: 1200,
+        height: 630,
+        alt: "Muhammad Kashif — Full-Stack SaaS Architect",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "MTK Codex | Full-Stack SaaS Architect",
+    title: "Muhammad Kashif | Full-Stack SaaS Architect",
     description:
-      "Full-Stack SaaS Architect with 7 production platforms. Multi-tenant SaaS, AI integration, web + mobile + desktop. Available for remote freelance work.",
+      "7 production SaaS platforms. Multi-tenant architecture, AI integration, web + mobile + desktop. Available for remote freelance work.",
+    images: ["/images/og/og-cover.png"],
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large" },
   },
+  category: "technology",
 };
 
 export default function RootLayout({
@@ -99,14 +122,37 @@ export default function RootLayout({
               "@type": "Person",
               "@id": "https://pf.mtkcodex.site/#person",
               "name": "Muhammad Kashif",
+              "alternateName": ["Malik Kashif", "MTK Codex"],
               "jobTitle": "Full-Stack SaaS Architect",
+              "description":
+                "Full-stack SaaS architect and founder of MTK Codex. Ships multi-tenant platforms across web, mobile and desktop.",
               "url": "https://pf.mtkcodex.site",
+              "email": "mailto:kaash0542@gmail.com",
+              "image": "https://pf.mtkcodex.site/images/og/og-cover.png",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Lahore",
+                "addressRegion": "Punjab",
+                "addressCountry": "PK",
+              },
+              "worksFor": {
+                "@type": "Organization",
+                "name": "MTK Codex",
+                "url": "https://mtkcodex.tech",
+              },
+              "alumniOf": {
+                "@type": "CollegeOrUniversity",
+                "name": "COMSATS University Islamabad, Lahore Campus",
+              },
+              "knowsLanguage": ["English", "Urdu"],
               "knowsAbout": [
                 "Next.js",
                 "TypeScript",
                 "Tailwind CSS",
                 "Multi-Tenant SaaS",
+                "PostgreSQL Row Level Security",
                 "AI Integration",
+                "CRM Development",
                 "SaaS Development",
                 "React",
                 "React Native",
@@ -121,6 +167,7 @@ export default function RootLayout({
               "sameAs": [
                 "https://github.com/Kaashmalik",
                 "https://www.linkedin.com/in/muhammadkashif-mtkcodex",
+                "https://mtkcodex.tech",
               ],
             }),
           }}

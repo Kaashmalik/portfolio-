@@ -5,9 +5,9 @@ import { Download, ExternalLink } from 'lucide-react';
 import styles from './Hero.module.css';
 
 const ROLES = [
-  'Next.js Developer',
-  'AI Integration Specialist',
-  'SaaS Builder',
+  'multi-tenant SaaS platforms',
+  'AI-powered CRM workflows',
+  'web, mobile & desktop apps',
 ];
 
 const METRICS = [
@@ -72,18 +72,33 @@ export default function Hero() {
         </div>
 
         <p className={styles.subtitle}>
-          Production-grade multi-tenant SaaS platforms across web, mobile, and desktop. 7 platforms shipped,
-          3 live in production, 500+ tenants served. Built with Next.js, NestJS, Laravel, Supabase, React Native, and Electron.
+          I turn messy operations into multi-tenant platforms people pay for — 7 shipped,
+          3 live, 500+ tenants served. Full-stack across Next.js, NestJS, Laravel,
+          React Native, and Electron.
         </p>
 
         <div className={styles.heroCtas}>
-          <a href="#projects" className={`${styles.cta} ${styles.ctaPrimary}`}>
-            <ExternalLink size={18} /> View Projects
+          <a href="#contact" className={`${styles.cta} ${styles.ctaPrimary}`}>
+            <ExternalLink size={18} /> Hire Me
+          </a>
+          <a href="#projects" className={`${styles.cta} ${styles.ctaGhost}`}>
+            See 7 Platforms
           </a>
           <a href="/documents/Muhammad-Kashif-CV.pdf" className={`${styles.cta} ${styles.ctaGhost}`} target="_blank" rel="noopener noreferrer">
-            <Download size={18} /> Download CV
+            <Download size={18} /> CV
           </a>
         </div>
+
+        <p className={styles.liveProof}>
+          Live right now:{' '}
+          <a href="https://www.laraibcreative.studio" target="_blank" rel="noopener noreferrer">LaraibCreative</a>
+          <span aria-hidden="true">·</span>
+          <a href="https://dairy.mtkcodex.site" target="_blank" rel="noopener noreferrer">MTK Dairy</a>
+          <span aria-hidden="true">·</span>
+          <a href="https://www.cricketleague.tech" target="_blank" rel="noopener noreferrer">Cricket League</a>
+          <span aria-hidden="true">·</span>
+          <a href="https://mtkcodex.tech" target="_blank" rel="noopener noreferrer">MTK Codex</a>
+        </p>
 
         <div className={styles.heroMeta}>
           {METRICS.map((metric) => (

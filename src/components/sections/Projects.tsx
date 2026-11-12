@@ -1,11 +1,16 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { ExternalLink, ArrowRight, X, CheckCircle2 } from 'lucide-react';
+import { ExternalLink, ArrowRight, X, CheckCircle2, PlayCircle } from 'lucide-react';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 import type { Project } from '@/data/projects';
 import { projects } from '@/data/projects';
 import styles from './Projects.module.css';
+
+const walkthroughLink = (title: string) =>
+  `https://wa.me/923038111297?text=${encodeURIComponent(
+    `Hi Muhammad, I'd like a live walkthrough of ${title}. Here's what I'm building: `
+  )}`;
 
 export default function Projects() {
   const featuredProjects = useMemo(() => projects.filter((project) => project.featured), []);
@@ -24,8 +29,8 @@ export default function Projects() {
               <span className="text-gradient">Serving Real Clients</span>
             </h2>
             <p>
-              From fintech to agri-tech, every platform below is deployed with paying tenants, AI integrations,
-              and full multi-tenant infrastructure.
+              From fintech to agri-tech, every platform below ships with tenant isolation, AI integrations,
+              and the boring production work — telemetry, backups, and handoff docs.
             </p>
           </div>
         </ScrollReveal>
@@ -52,12 +57,46 @@ export default function Projects() {
   );
 }
 
+function ProjectCover({ project, compact = false }: { project: Project; compact?: boolean }) {
+  return (
+    <div
+      className={`${styles.cover} ${compact ? styles.coverCompact : ''}`}
+      style={{
+        background: `radial-gradient(circle at 20% 10%, ${project.accent}55, transparent 55%), linear-gradient(135deg, ${project.accent}22 0%, #0a0a0f 75%)`,
+      }}
+      aria-hidden="true"
+    >
+      <div
+        className={styles.coverImage}
+        style={project.image ? { backgroundImage: `url(${project.image})` } : undefined}
+        hidden={!project.image}
+      />
+      <span className={styles.coverInitial} style={{ color: project.accent }}>
+        {project.title.charAt(0)}
+      </span>
+      {compact && !project.image && (
+        <div className={styles.coverTitle}>
+          <span>{project.category}</span>
+          <strong>{project.title}</strong>
+        </div>
+      )}
+      <div className={styles.coverScrim} />
+    </div>
+  );
+}
+
 function FeaturedProject({ project, onOpenCaseStudy }: { project: Project; onOpenCaseStudy: (project: Project) => void; }) {
   return (
     <section className={styles.featured}>
       <div className={styles.featuredVisual}>
+        <ProjectCover project={project} />
         <div className={styles.featuredBadge}>{project.category}</div>
-        <div className={styles.featuredImage} style={{ backgroundImage: `url(${project.image})` }} />
+        <div className={styles.featuredCaption}>
+          <span>{project.title}</span>
+          <span className={styles.featuredStatus}>
+            {project.liveUrl ? 'Live in production' : 'Private demo'}
+          </span>
+        </div>
       </div>
       <div className={styles.featuredContent}>
         <p className={styles.featuredLabel}>Flagship Platform</p>
@@ -73,8 +112,8 @@ function FeaturedProject({ project, onOpenCaseStudy }: { project: Project; onOpe
             <p>Technologies</p>
           </div>
           <div>
-            <span>24/7</span>
-            <p>Production Support</p>
+            <span>{project.liveUrl ? 'Live' : 'On request'}</span>
+            <p>Demo Access</p>
           </div>
         </div>
         <div className={styles.featuredCtas}>
@@ -84,6 +123,11 @@ function FeaturedProject({ project, onOpenCaseStudy }: { project: Project; onOpe
           {project.liveUrl && (
             <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className={styles.ghostButton}>
               <ExternalLink size={16} /> Live Demo
+            </a>
+          )}
+          {!project.liveUrl && project.walkthrough && (
+            <a href={walkthroughLink(project.title)} target="_blank" rel="noopener noreferrer" className={styles.ghostButton}>
+              <PlayCircle size={16} /> Walkthrough
             </a>
           )}
           {project.githubUrl && (
@@ -100,6 +144,7 @@ function FeaturedProject({ project, onOpenCaseStudy }: { project: Project; onOpe
 function ProjectCard({ project, onOpenCaseStudy }: { project: Project; onOpenCaseStudy: (project: Project) => void; }) {
   return (
     <article className={styles.projectCard}>
+      <ProjectCover project={project} compact />
       <div className={styles.cardHeader}>
         <span className={styles.cardCategory}>{project.category}</span>
         <h3>{project.title}</h3>
@@ -128,6 +173,11 @@ function ProjectCard({ project, onOpenCaseStudy }: { project: Project; onOpenCas
             <ExternalLink size={14} /> Live
           </a>
         )}
+        {!project.liveUrl && project.walkthrough && (
+          <a href={walkthroughLink(project.title)} target="_blank" rel="noopener noreferrer">
+            <PlayCircle size={14} /> Walkthrough
+          </a>
+        )}
         {project.githubUrl && (
           <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
             <GithubIcon size={14} /> Code
@@ -140,14 +190,30 @@ function ProjectCard({ project, onOpenCaseStudy }: { project: Project; onOpenCas
 
 function CaseStudyModal({ project, onClose }: { project: Project; onClose: () => void }) {
   return (
-    <div className={styles.modalOverlay}>
-      <div className={styles.modalContent} role="dialog" aria-modal="true">
+    <div className={styles.modalOverlay} onClick={onClose}>
+      <div className={styles.modalContent} role="dialog" aria-modal="true" onClick={(event) => event.stopPropagation()}>
         <button className={styles.modalClose} onClick={onClose} aria-label="Close case study">
           <X size={18} />
         </button>
         <p className={styles.modalLabel}>Case Study</p>
         <h3>{project.title}</h3>
         <p className={styles.modalCategory}>{project.category}</p>
+
+        <div className={styles.caseStudyGrid}>
+          <div className={styles.caseStudyBlock}>
+            <span>Problem</span>
+            <p>{project.caseStudy.problem}</p>
+          </div>
+          <div className={styles.caseStudyBlock}>
+            <span>What I built</span>
+            <p>{project.caseStudy.solution}</p>
+          </div>
+          <div className={`${styles.caseStudyBlock} ${styles.caseStudyResult}`}>
+            <span>Result</span>
+            <p>{project.caseStudy.result}</p>
+          </div>
+        </div>
+
         <p className={styles.modalDesc}>{project.longDescription}</p>
         <div className={styles.modalHighlights}>
           {project.highlights.map((highlight) => (
@@ -168,6 +234,11 @@ function CaseStudyModal({ project, onClose }: { project: Project; onClose: () =>
               {project.liveUrl && (
                 <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
                   <ExternalLink size={14} /> Live Demo
+                </a>
+              )}
+              {!project.liveUrl && project.walkthrough && (
+                <a href={walkthroughLink(project.title)} target="_blank" rel="noopener noreferrer">
+                  <PlayCircle size={14} /> Book a walkthrough
                 </a>
               )}
               {project.githubUrl && (

@@ -6,10 +6,19 @@ export interface Project {
   techStack: string[];
   category: string;
   image: string;
+  /** Brand colour used for the generated cover when no screenshot exists. */
+  accent: string;
   liveUrl?: string;
   githubUrl?: string;
+  /** No public demo (private client work or not deployed yet) — offer a live walkthrough instead. */
+  walkthrough?: boolean;
   featured: boolean;
   highlights: string[];
+  caseStudy: {
+    problem: string;
+    solution: string;
+    result: string;
+  };
 }
 
 export const projects: Project[] = [
@@ -21,6 +30,7 @@ export const projects: Project[] = [
     techStack: ['Next.js 14', 'React 18', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Node.js', 'Express.js', 'MongoDB', 'Mongoose', 'JWT', 'Zustand', 'Cloudinary'],
     category: 'E-Commerce',
     image: '/images/projects/laraibcreative.webp',
+    accent: '#ec4899',
     liveUrl: 'https://www.laraibcreative.studio',
     githubUrl: 'https://github.com/Kaashmalik/laraibcreative-platform',
     featured: true,
@@ -30,6 +40,11 @@ export const projects: Project[] = [
       'Mobile-first responsive design with dark mode and persistent wishlist sync',
       'Admin dashboard with 9-stage order fulfillment pipeline and payment verification',
     ],
+    caseStudy: {
+      problem: 'A luxury fashion brand selling custom-stitched suits had no way to capture body measurements online or show customers where an order was in production.',
+      solution: 'Built the storefront and admin around a 9-stage order pipeline: measurements attach to every order line, customers follow production from cutting to delivery, and admins verify COD, JazzCash and EasyPaisa payments.',
+      result: 'A live storefront where custom orders and payments are tracked end to end — with roughly 60% faster page loads after the Next.js migration.',
+    },
   },
   {
     id: 'shakir-super-league',
@@ -39,7 +54,8 @@ export const projects: Project[] = [
     techStack: ['Next.js 15', 'React 19', 'TypeScript', 'Tailwind CSS v4', 'NestJS v11', 'PostgreSQL', 'Supabase', 'Redis', 'Apache Kafka', 'ClickHouse', 'Drizzle ORM', 'Zod', 'Clerk', 'Stripe', 'OpenAI GPT', 'Mediasoup', 'Docker', 'Nginx'],
     category: 'Sports Tech / SaaS',
     image: '/images/projects/shakir-super-league.webp',
-    liveUrl: '#',
+    accent: '#ef4444',
+    liveUrl: 'https://www.cricketleague.tech',
     githubUrl: 'https://github.com/Kaashmalik/mtk-ssl2026.git',
     featured: true,
     highlights: [
@@ -48,6 +64,11 @@ export const projects: Project[] = [
       'AI multi-language commentary (English, Urdu, Punjabi, Pashto, Sindhi) via GPT with circuit-breaker pattern and Redis caching',
       'WebRTC live match streaming with Mediasoup, multi-room support, and low-latency broadcast',
     ],
+    caseStudy: {
+      problem: 'Independent cricket leagues need live scoring, multilingual commentary, streaming and fantasy cricket — but cannot build or maintain that stack themselves.',
+      solution: 'Shipped a white-label SaaS where each league gets a custom domain and brand, ball-by-ball scoring syncs over WebSockets, GPT writes commentary in five languages, and Mediasoup handles live video.',
+      result: 'Multiple leagues now run on one reusable platform, with score updates under a second and cached commentary that keeps AI costs predictable.',
+    },
   },
   {
     id: 'mtk-dairy',
@@ -57,6 +78,7 @@ export const projects: Project[] = [
     techStack: ['Next.js 15', 'TypeScript', 'Tailwind CSS', 'shadcn/ui', 'Clerk', 'Supabase', 'PostgreSQL', 'Drizzle ORM', 'Firebase Firestore', 'Upstash Redis', 'BullMQ', 'Cloudinary', 'Resend', 'Zustand', 'TanStack Query', 'next-intl', 'Sentry'],
     category: 'Agricultural Tech / SaaS',
     image: '/images/projects/mtk-dairy.webp',
+    accent: '#22c55e',
     liveUrl: 'https://dairy.mtkcodex.site',
     githubUrl: 'https://github.com/Kaashmalik/malik-tech-dairy',
     featured: true,
@@ -66,6 +88,11 @@ export const projects: Project[] = [
       '7-role RBAC (farm_owner to accountant) with granular permissions and audit logging',
       'Local payment integration (JazzCash, EasyPaisa, XPay) with tiered subscriptions and feature gating',
     ],
+    caseStudy: {
+      problem: 'Dairy farms and cooperatives tracked milk yield, animal health, breeding and payments on paper — losing money to blind spots and delayed reporting.',
+      solution: 'Built a multi-tenant platform with organization-level isolation, seven roles, IoT feeds from milking machines, a bilingual Urdu/English UI and an offline-capable PWA for the field.',
+      result: '500+ farms and 50K+ animals now tracked in one system with full tenant isolation and a 99.9% uptime target.',
+    },
   },
   {
     id: 'mtk-edu',
@@ -74,9 +101,9 @@ export const projects: Project[] = [
     longDescription: 'A comprehensive, multi-tenant school management SaaS platform designed for educational institutions of all sizes. Features subdomain-based tenant isolation via stancl/tenancy, AI-powered performance prediction and automated report generation via OpenAI, biometric attendance with Azure Face API integration, and offline-first React Native mobile apps with WatermelonDB. Backend built on Laravel 11 with Sanctum authentication, Spatie permissions (7 roles), and Laravel Horizon for queue management. Frontend uses Next.js 15 with Zustand, React Hook Form + Zod, and Recharts. 90+ RESTful API endpoints covering the complete academic lifecycle — from admission to graduation. Deployed on Vercel + Render with Supabase PostgreSQL, Cloudflare CDN, and Sentry monitoring.',
     techStack: ['Next.js 15', 'React 19', 'TypeScript', 'Tailwind CSS', 'Laravel 11', 'PHP 8.2', 'PostgreSQL', 'Supabase', 'Redis', 'React Native', 'Expo', 'WatermelonDB', 'Zustand', 'React Hook Form', 'Zod', 'Recharts', 'next-intl', 'Sentry'],
     category: 'EdTech / SaaS',
-    image: '/images/projects/mtk-edu.webp',
-    liveUrl: '#',
-    githubUrl: '#',
+    image: '',
+    accent: '#f59e0b',
+    walkthrough: true,
     featured: true,
     highlights: [
       'Multi-tenant SaaS with subdomain isolation — each school gets a dedicated subdomain with complete data separation',
@@ -84,6 +111,11 @@ export const projects: Project[] = [
       'Biometric attendance with Azure Face API + offline-first React Native mobile apps with WatermelonDB sync',
       '90+ RESTful API endpoints covering full academic lifecycle — admission, exams, fees, library, and analytics',
     ],
+    caseStudy: {
+      problem: 'Schools juggled admissions, attendance, exams, fees and reporting across spreadsheets and disconnected tools, eating administrator hours every week.',
+      solution: 'Built a subdomain-isolated school platform with 90+ APIs, biometric attendance, AI performance insights and an offline-first React Native app so teachers can mark attendance without internet.',
+      result: 'Administrators report saving 20+ hours per week, and every school keeps its own branded, fully separated portal.',
+    },
   },
   {
     id: 'instalease',
@@ -92,9 +124,10 @@ export const projects: Project[] = [
     longDescription: 'A production-grade, multi-tenant SaaS platform for retail installment businesses (home appliances, mobile phones, electronics, furniture). Features complete data isolation via PostgreSQL Row Level Security (RLS), 6-tier role-based access control (super_admin to customer), and real-time dashboards powered by Supabase Realtime subscriptions. Covers the full installment lifecycle: customer onboarding with CNIC verification, contract creation, automated installment scheduling, payment recording with receipt generation, guarantor management, and overdue/late-fee tracking. Includes a SaaS subscription model with tiered plans, multi-step shop registration with payment slip upload and manual verification, and a centralized Super Admin portal for platform-wide management. Built with Next.js 16, Supabase Auth, Zustand, TanStack Query v5, and deployed on Vercel.',
     techStack: ['Next.js 16', 'React 19', 'TypeScript', 'Tailwind CSS v4', 'shadcn/ui', 'Supabase', 'PostgreSQL', 'Zustand', 'TanStack Query v5', 'React Hook Form', 'Zod', 'Recharts', 'Twilio', 'pdf-lib', 'Tesseract.js', 'Sentry'],
     category: 'FinTech / SaaS',
-    image: '/images/projects/instalease.webp',
-    liveUrl: 'https://instalease.mtkcodex.site',
+    image: '',
+    accent: '#4f6bff',
     githubUrl: 'https://github.com/Kaashmalik/MTK-instalease',
+    walkthrough: true,
     featured: true,
     highlights: [
       'Multi-tenant architecture with PostgreSQL RLS — unlimited shops with complete data isolation and 6-tier RBAC',
@@ -102,6 +135,11 @@ export const projects: Project[] = [
       'End-to-end installment workflow — CNIC verification, contract creation, auto-scheduling, receipt generation, and late-fee tracking',
       'SaaS subscription model with Super Admin portal — tiered plans, multi-step shop registration, and platform-wide management',
     ],
+    caseStudy: {
+      problem: 'Retail installment shops managed contracts, guarantors, late fees and recovery in registers, with no reliable view of revenue or overdue accounts.',
+      solution: 'Built a multi-tenant FinTech platform with PostgreSQL RLS, six role levels, CNIC OCR onboarding, automatic payment schedules, PDF receipts and real-time dashboards.',
+      result: 'Unlimited shops onboard in minutes with complete data isolation, while owners see revenue and recovery live instead of at month end.',
+    },
   },
   {
     id: 'mtk-alertpro',
@@ -110,9 +148,10 @@ export const projects: Project[] = [
     longDescription: 'A privacy-first mobile security application built with React Native + Expo that turns any IP camera into a smart surveillance system. Runs TensorFlow.js with SSD MobileNet V2 directly on-device for real-time person and vehicle detection — zero cloud processing means zero latency on inference and complete data privacy. Features instant push notifications with configurable cooldowns, alarm sound playback with red alert mode, vibration patterns, and per-camera detection settings (person/vehicle toggles, sensitivity thresholds). Achieves under 2-second end-to-end alert latency. Connects to 80%+ of IP cameras via RTSP/HTTP streams with automatic reconnection and offline camera caching. Backend powered by Supabase with Row Level Security for all user data. Monetized via RevenueCat subscriptions.',
     techStack: ['React Native', 'Expo SDK 52', 'TypeScript', 'NativeWind 4', 'Expo Router 4', 'Zustand 5', 'TanStack Query 5', 'Supabase', 'TensorFlow.js', 'SSD MobileNet V2', 'Firebase Cloud Messaging', 'RevenueCat', 'Expo Notifications'],
     category: 'AI / Mobile Security',
-    image: '/images/projects/mtk-alertpro.webp',
-    liveUrl: '#',
+    image: '',
+    accent: '#06b6d4',
     githubUrl: 'https://github.com/Kaashmalik/mtk-alert-pro',
+    walkthrough: true,
     featured: true,
     highlights: [
       'On-device AI detection — TensorFlow.js + SSD MobileNet V2 runs directly on phone for real-time person/vehicle detection with zero cloud dependency',
@@ -120,6 +159,11 @@ export const projects: Project[] = [
       'Universal IP camera compatibility — 80%+ camera support via RTSP/HTTP streams with auto-reconnection and offline caching',
       'Privacy-first architecture — all AI processing on-device, camera credentials encrypted in memory, Supabase RLS protecting all user data',
     ],
+    caseStudy: {
+      problem: 'IP cameras record everything but alert no one — and cloud AI surveillance adds bandwidth cost and privacy risk.',
+      solution: 'Built a React Native app that runs TensorFlow.js and SSD MobileNet V2 on the phone, connects to RTSP/HTTP cameras and fires push alerts, alarms and red-alert mode without sending frames to the cloud.',
+      result: 'Sub-two-second alerts with zero frames uploaded, 80%+ camera compatibility, and RevenueCat-ready subscriptions.',
+    },
   },
   {
     id: 'mtk-download-manager',
@@ -128,9 +172,10 @@ export const projects: Project[] = [
     longDescription: 'A professional-grade cross-platform desktop download manager built with Electron 28 and React 18. Powered by yt-dlp for downloading from 1000+ websites including YouTube, Vimeo, and Twitch. Features full-featured download queue with pause/resume/cancel, priority ordering, drag-and-drop reordering, and parallel downloads with configurable concurrency. Real-time progress tracking shows speed, ETA, and size per item. Modern dark-themed UI with sidebar navigation, animated transitions via Framer Motion, toast notifications, and system tray with minimize-to-tray. Uses Better-SQLite3 for local database, Zustand for state management, and Electron Builder for cross-platform packaging (Windows NSIS/Portable, macOS DMG, Linux AppImage/DEB/RPM) with auto-update via GitHub Releases.',
     techStack: ['Electron 28', 'React 18', 'TypeScript', 'Vite 5', 'Tailwind CSS', 'Framer Motion', 'Zustand', 'Zod', 'Better-SQLite3', 'yt-dlp', 'Winston', 'Electron Builder', 'Electron Updater'],
     category: 'Desktop App / Utility',
-    image: '/images/projects/mtk-download-manager.webp',
-    liveUrl: '#',
+    image: '',
+    accent: '#a855f7',
     githubUrl: 'https://github.com/Kaashmalik/MTK-Download-manager-',
+    walkthrough: true,
     featured: true,
     highlights: [
       '1000+ site support via yt-dlp — video/audio download with format selection, subtitle embedding, and chapter markers',
@@ -138,5 +183,10 @@ export const projects: Project[] = [
       'Professional desktop UX — dark theme, sidebar nav, Framer Motion transitions, system tray, and minimize-to-tray',
       'Cross-platform distribution — Windows (NSIS + Portable), macOS (DMG), Linux (AppImage/DEB/RPM) with auto-update',
     ],
+    caseStudy: {
+      problem: 'Power users needed a dependable way to download media from many sites with real queue control — not a pile of browser tabs and flaky extensions.',
+      solution: 'Built an Electron app on yt-dlp with a drag-and-drop priority queue, parallel downloads, format and subtitle control, tray mode and automatic updates.',
+      result: '1000+ supported sites across Windows, macOS and Linux, shipped with installers and update delivery through GitHub Releases.',
+    },
   },
 ];

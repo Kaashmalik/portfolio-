@@ -12,7 +12,7 @@ LinkedIn: https://www.linkedin.com/in/muhammadkashif-mtkcodex
 
 ## PROFESSIONAL SUMMARY
 
-Full-Stack SaaS Architect with 3+ years of experience designing and shipping production-grade multi-tenant SaaS platforms across web, mobile, and desktop. 7 platforms shipped — 3 live in production serving 500+ tenants and 50K+ tracked entities. Deep expertise in Next.js (14/15/16), TypeScript, NestJS, Laravel, React Native, and Electron. Proven track record of full-stack ownership from database schema and API design to responsive UI, payment integration, CI/CD pipelines, and production deployment. Available 9+ hours/day for remote engagements worldwide.
+Full-Stack SaaS Architect with 4+ years of experience designing and shipping production-grade multi-tenant SaaS platforms across web, mobile, and desktop. 7 platforms shipped — 3 live in production serving 500+ tenants and 50K+ tracked entities. Currently a Full Stack Engineer at Pastry Marketing Agency, building an AI-assisted Smart CRM and client portal. Deep expertise in Next.js (14/15/16), TypeScript, NestJS, Laravel, React Native, and Electron. Proven track record of full-stack ownership from database schema and API design to responsive UI, payment integration, CI/CD pipelines, and production deployment. Available 9+ hours/day for remote engagements worldwide.
 
 ---
 
@@ -42,7 +42,20 @@ Full-Stack SaaS Architect with 3+ years of experience designing and shipping pro
 
 ## PROFESSIONAL EXPERIENCE
 
-### Full-Stack SaaS Architect
+### Full Stack Engineer
+**Pastry Marketing Agency** | Remote — Lahore, PK | Aug 2026 — Present
+
+Building and maintaining the agency's Smart CRM system and client portal, plus the AI workflows that run on top of it.
+
+- Build and maintain the Smart CRM and client portal with Next.js, TypeScript, React, PostgreSQL, and Python services
+- Ship AI-driven automation that removes manual steps from client onboarding, reporting, and follow-up workflows
+- Own features end to end — schema, API, UI, and deployment — and turn non-technical stakeholder requests into scoped releases
+
+**Key Technologies:** Next.js, TypeScript, React, PostgreSQL, Python, Tailwind CSS
+
+---
+
+### Full-Stack SaaS Architect & Founder
 **MTK Codex** | Remote — Lahore, PK | Jan 2024 — Present
 
 Founder and lead architect — designing and shipping production multi-tenant SaaS platforms across web, mobile, and desktop for clients across Pakistan and internationally.

@@ -1,14 +1,9 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { ChevronLeft, ExternalLink, Layers, Target, CheckCircle2 } from 'lucide-react';
+import { ChevronLeft, ExternalLink, Layers, Target, CheckCircle2, PlayCircle, TrendingUp } from 'lucide-react';
+import type { Metadata } from 'next';
 import { projects } from '@/data/projects';
 import styles from './page.module.css';
-
-const projectEmojis: Record<string, string> = {
-  'cricket-saas': '🏏',
-  'mobile-app': '📱',
-  'portfolio-site': '🌐',
-};
 
 function GithubIcon({ size = 18 }: { size?: number }) {
   return (
@@ -18,11 +13,28 @@ function GithubIcon({ size = 18 }: { size?: number }) {
   );
 }
 
-// Ensure the page gets static parameters generated for all known projects
 export function generateStaticParams() {
   return projects.map((project) => ({
     slug: project.id,
   }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const project = projects.find((p) => p.id === slug);
+
+  if (!project) return {};
+
+  return {
+    title: `${project.title} — ${project.category} case study`,
+    description: project.description,
+    alternates: { canonical: `/projects/${project.id}/` },
+    openGraph: {
+      title: `${project.title} — ${project.category}`,
+      description: project.description,
+      ...(project.image ? { images: [{ url: project.image, alt: project.title }] } : {}),
+    },
+  };
 }
 
 export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -32,6 +44,10 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   if (!project) {
     notFound();
   }
+
+  const walkthroughUrl = `https://wa.me/923038111297?text=${encodeURIComponent(
+    `Hi Muhammad, I'd like a live walkthrough of ${project.title}. Here's what I'm building: `
+  )}`;
 
   return (
     <div className={styles.page}>
@@ -49,19 +65,53 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           <p className={styles.description}>{project.description}</p>
         </header>
 
-        <div className={styles.imageWrapper}>
-          <div className={styles.imagePlaceholder}>
-            {projectEmojis[project.id] || '🚀'}
-          </div>
+        <div
+          className={styles.imageWrapper}
+          style={{
+            background: `radial-gradient(circle at 20% 10%, ${project.accent}55, transparent 55%), linear-gradient(135deg, ${project.accent}22 0%, #0a0a0f 75%)`,
+          }}
+        >
+          {project.image && (
+            <div
+              className={styles.image}
+              style={{ backgroundImage: `url(${project.image})` }}
+            />
+          )}
+          <span className={styles.imageInitial} style={{ color: project.accent }}>
+            {project.title.charAt(0)}
+          </span>
+          {!project.image && (
+            <div className={styles.imageTitle}>
+              <span>{project.category}</span>
+              <strong>{project.title}</strong>
+            </div>
+          )}
         </div>
 
         <div className={styles.content}>
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>
               <Target className={styles.sectionIcon} />
-              Project Overview
+              The Problem
             </h2>
+            <p className={styles.text}>{project.caseStudy.problem}</p>
+          </section>
+
+          <section className={styles.section}>
+            <h2 className={styles.sectionTitle}>
+              <Layers className={styles.sectionIcon} />
+              What I Built
+            </h2>
+            <p className={styles.text}>{project.caseStudy.solution}</p>
             <p className={styles.text}>{project.longDescription}</p>
+          </section>
+
+          <section className={styles.section}>
+            <h2 className={styles.sectionTitle}>
+              <TrendingUp className={styles.sectionIcon} />
+              Result
+            </h2>
+            <p className={styles.text}>{project.caseStudy.result}</p>
           </section>
 
           <section className={styles.section}>
@@ -101,6 +151,17 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
               >
                 <ExternalLink size={18} />
                 Live Demo
+              </a>
+            )}
+            {!project.liveUrl && project.walkthrough && (
+              <a
+                href={walkthroughUrl}
+                className="btn btn-primary"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <PlayCircle size={18} />
+                Book a Walkthrough
               </a>
             )}
             {project.githubUrl && (

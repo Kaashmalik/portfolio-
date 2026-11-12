@@ -1,0 +1,769 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>LinkedIn Playbook — Muhammad Kashif</title>
+<style>
+  @page { size: A4; margin: 16mm 15mm 18mm 15mm; }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --ink: #0f172a;
+    --body: #334155;
+    --muted: #64748b;
+    --line: #e2e8f0;
+    --cyan: #0891b2;
+    --purple: #7c3aed;
+    --soft: #f8fafc;
+    --good: #047857;
+    --bad: #b91c1c;
+  }
+
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  body {
+    font-family: "Segoe UI", -apple-system, "Helvetica Neue", Arial, sans-serif;
+    color: var(--body);
+    font-size: 10.2pt;
+    line-height: 1.55;
+  }
+
+  /* ---------- COVER ---------- */
+  .cover {
+    height: 258mm;
+    background: #07070d;
+    color: #f8fafc;
+    border-radius: 10px;
+    padding: 26mm 20mm;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+  }
+  .cover::before {
+    content: "";
+    position: absolute;
+    width: 420px; height: 420px;
+    left: -140px; top: -160px;
+    background: radial-gradient(circle, rgba(34,211,238,.45), transparent 65%);
+    filter: blur(24px);
+  }
+  .cover::after {
+    content: "";
+    position: absolute;
+    width: 460px; height: 460px;
+    right: -170px; bottom: -200px;
+    background: radial-gradient(circle, rgba(168,85,247,.5), transparent 65%);
+    filter: blur(24px);
+  }
+  .cover > * { position: relative; z-index: 2; }
+  .cover .kicker {
+    font-size: 9pt;
+    letter-spacing: .34em;
+    text-transform: uppercase;
+    color: #22d3ee;
+    font-weight: 600;
+  }
+  .cover h1 {
+    font-size: 40pt;
+    line-height: 1.02;
+    letter-spacing: -.035em;
+    font-weight: 800;
+    margin-top: 8mm;
+  }
+  .cover h1 em {
+    display: block;
+    font-style: normal;
+    color: #22d3ee;
+  }
+  .cover .sub {
+    margin-top: 7mm;
+    font-size: 12pt;
+    color: #cbd5e1;
+    max-width: 120mm;
+    line-height: 1.5;
+  }
+  .cover .rule {
+    width: 28mm; height: 3px;
+    background: linear-gradient(90deg, #22d3ee, #a855f7);
+    border-radius: 2px;
+    margin: 10mm 0 6mm;
+  }
+  .cover .meta {
+    display: flex;
+    gap: 12mm;
+    font-size: 9pt;
+    color: #94a3b8;
+    border-top: 1px solid rgba(255,255,255,.14);
+    padding-top: 6mm;
+  }
+  .cover .meta b { display: block; color: #e2e8f0; font-size: 10pt; margin-bottom: 1mm; }
+
+  /* ---------- STRUCTURE ---------- */
+  .page { margin-top: 9mm; }
+  .page:first-of-type { margin-top: 0; }
+  .newpage { page-break-before: always; break-before: page; margin-top: 0; }
+
+  h2 {
+    page-break-after: avoid;
+    break-after: avoid;
+    font-size: 17pt;
+    color: var(--ink);
+    letter-spacing: -.02em;
+    font-weight: 700;
+    margin-bottom: 2mm;
+    display: flex;
+    align-items: baseline;
+    gap: 3mm;
+  }
+  h2 .num {
+    font-size: 9pt;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(135deg, var(--cyan), var(--purple));
+    padding: 1.2mm 2.4mm;
+    border-radius: 4px;
+    letter-spacing: .08em;
+  }
+  .lede {
+    color: var(--muted);
+    font-size: 10pt;
+    margin-bottom: 7mm;
+    padding-bottom: 4mm;
+    border-bottom: 1px solid var(--line);
+  }
+  h3 {
+    font-size: 11.5pt;
+    color: var(--ink);
+    margin: 6mm 0 2mm;
+    font-weight: 650;
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+  h3:first-of-type { margin-top: 0; }
+  p { margin-bottom: 2.5mm; }
+  ul, ol { margin: 0 0 3mm 5mm; }
+  li { margin-bottom: 1.4mm; }
+  strong { color: var(--ink); font-weight: 650; }
+
+  /* ---------- TABLES ---------- */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9pt;
+    margin: 3mm 0 5mm;
+  }
+  th {
+    text-align: left;
+    background: var(--soft);
+    color: var(--ink);
+    font-weight: 650;
+    padding: 2mm 2.4mm;
+    border-bottom: 1.5px solid var(--line);
+    font-size: 8.4pt;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+  }
+  td {
+    padding: 1.9mm 2.4mm;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+  tr { page-break-inside: avoid; break-inside: avoid; }
+  tr:nth-child(even) td { background: #fcfdff; }
+  td:first-child { color: var(--ink); font-weight: 600; width: 26%; }
+
+  /* ---------- COPY BLOCKS ---------- */
+  .copy {
+    background: var(--soft);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--cyan);
+    border-radius: 5px;
+    padding: 4mm 4.5mm;
+    margin: 3mm 0 5mm;
+    font-size: 9.2pt;
+    line-height: 1.62;
+    white-space: pre-wrap;
+    color: #1e293b;
+  }
+  .copy .tag {
+    display: block;
+    font-family: "Consolas", monospace;
+    font-size: 7.5pt;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    margin-bottom: 2.5mm;
+    font-weight: 700;
+  }
+  .copy.alt { border-left-color: var(--purple); }
+  .copy.alt .tag { color: var(--purple); }
+
+  /* ---------- CALLOUTS ---------- */
+  .note {
+    border-radius: 5px;
+    padding: 3.4mm 4mm;
+    margin: 3mm 0 4mm;
+    font-size: 9.2pt;
+    page-break-inside: avoid;
+  }
+  .note.warn { background: #fef2f2; border: 1px solid #fecaca; color: #7f1d1d; }
+  .note.ok { background: #f0fdf4; border: 1px solid #bbf7d0; color: #14532d; }
+  .note.info { background: #eff6ff; border: 1px solid #bfdbfe; color: #1e3a8a; }
+  .note b { display: block; margin-bottom: 1mm; font-size: 9pt; letter-spacing: .04em; text-transform: uppercase; }
+
+  /* ---------- STEPS ---------- */
+  ol.steps { list-style: none; margin-left: 0; counter-reset: step; }
+  ol.steps > li {
+    counter-increment: step;
+    position: relative;
+    padding-left: 9mm;
+    margin-bottom: 2.6mm;
+    page-break-inside: avoid;
+  }
+  ol.steps > li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0; top: 0.2mm;
+    width: 5.6mm; height: 5.6mm;
+    border-radius: 50%;
+    background: var(--ink);
+    color: #fff;
+    font-size: 8pt;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+  }
+  .path {
+    font-family: "Consolas", monospace;
+    font-size: 8.6pt;
+    background: #f1f5f9;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 0.4mm 1.4mm;
+    color: #0f172a;
+    white-space: nowrap;
+  }
+
+  /* ---------- LINK TABLE ---------- */
+  .pill {
+    display: inline-block;
+    font-size: 7.6pt;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    padding: 0.8mm 2mm;
+    border-radius: 20px;
+  }
+  .pill.yes { background: #dcfce7; color: var(--good); }
+  .pill.no { background: #fee2e2; color: var(--bad); }
+
+  /* ---------- CHECKLIST ---------- */
+  ul.check { list-style: none; margin-left: 0; }
+  ul.check li {
+    position: relative;
+    padding-left: 7mm;
+    margin-bottom: 2.2mm;
+    font-size: 9.6pt;
+  }
+  ul.check li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 0.6mm;
+    width: 4mm; height: 4mm;
+    border: 1.5px solid #94a3b8;
+    border-radius: 2px;
+  }
+
+  .grid2 { display: flex; gap: 6mm; }
+  .grid2 > * { flex: 1; }
+
+  .compact h3 { margin: 3.4mm 0 1.2mm; }
+  .compact ul.check li { margin-bottom: 1mm; font-size: 9.3pt; }
+  .compact .kv { padding: 3.5mm 5mm !important; }
+  .compact .kv p { margin-bottom: 0.5mm; }
+  .compact .note { margin-top: 4mm !important; }
+
+  .kv { font-size: 9.2pt; }
+  .kv b { display: inline-block; width: 26mm; color: var(--ink); }
+
+  footer.docfoot {
+    margin-top: 6mm;
+    padding-top: 3mm;
+    border-top: 1px solid var(--line);
+    font-size: 8pt;
+    color: #94a3b8;
+    display: flex;
+    justify-content: space-between;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ COVER ============ -->
+<div class="cover">
+  <div>
+    <div class="kicker">Profile Playbook · 2026</div>
+    <h1>LINKEDIN<em>PLAYBOOK</em></h1>
+    <div class="rule"></div>
+    <p class="sub">
+      A step-by-step plan to turn your LinkedIn profile into a hiring page —
+      including exactly how to add live project links that people can click.
+    </p>
+  </div>
+  <div class="meta">
+    <div><b>Prepared for</b>Muhammad Kashif</div>
+    <div><b>Profile</b>in/muhammadkashif-mtkcodex</div>
+    <div><b>Portfolio</b>pf.mtkcodex.site</div>
+    <div><b>Date</b>8 November 2026</div>
+  </div>
+</div>
+
+<!-- ============ 1. AUDIT ============ -->
+<section class="page">
+  <h2><span class="num">01</span> The five-second audit</h2>
+  <p class="lede">What a founder sees before they scroll, and what it is costing you.</p>
+
+  <p>
+    A visitor decides in about five seconds whether you are worth a click. Right now your profile
+    tells them you are a <em>Full Stack Engineer who develops CRM systems</em> — a job title.
+    It does not tell them you have shipped seven production platforms, three of which are live on
+    the internet with real users. That is the gap this document closes.
+  </p>
+
+  <table>
+    <tr><th>Problem</th><th>Why it costs you work</th><th>Fix</th></tr>
+    <tr>
+      <td>Name mismatch</td>
+      <td>LinkedIn says <em>Malik Kashif</em>; your portfolio, CV and GitHub say <em>Muhammad Kashif</em>. Splits your search identity.</td>
+      <td>Use one name everywhere</td>
+    </tr>
+    <tr>
+      <td>Weak headline</td>
+      <td>Describes a task, not an outcome. Anyone can claim it. Hides your proof.</td>
+      <td>Proof-led headline (p.2)</td>
+    </tr>
+    <tr>
+      <td>Banner ≠ headline</td>
+      <td>Two different brands on one screen reads as unfinished.</td>
+      <td>Match banner to headline</td>
+    </tr>
+    <tr>
+      <td>#OpenToWork frame</td>
+      <td>Signals "seeking a job" to clients who wanted to hire a specialist.</td>
+      <td>Switch to <em>Providing services</em></td>
+    </tr>
+    <tr>
+      <td>About opens with employer</td>
+      <td>The first three lines are the most valuable space on the page, spent on a job description.</td>
+      <td>Outcome → proof → story</td>
+    </tr>
+    <tr>
+      <td>Only 3 featured items</td>
+      <td>Your strongest proof (InstalEase, SSL, MTK Edu, AlertPro) is invisible.</td>
+      <td>Add all 7 with live links</td>
+    </tr>
+    <tr>
+      <td>Diluted services</td>
+      <td>SEO and Android sit next to SaaS architecture and blur the position.</td>
+      <td>Keep 5 focused services</td>
+    </tr>
+    <tr>
+      <td>Wrong top skills</td>
+      <td>CRM and Python lead; neither is your differentiator.</td>
+      <td>Pin SaaS, Next.js, TypeScript</td>
+    </tr>
+    <tr>
+      <td>No recommendations</td>
+      <td>The strongest trust signal for hiring is missing entirely.</td>
+      <td>Request 3 this week (p.7)</td>
+    </tr>
+    <tr>
+      <td>No portfolio button</td>
+      <td>Visitors must hunt for proof. Most will not.</td>
+      <td>Custom button → portfolio</td>
+    </tr>
+  </table>
+
+  <div class="note info">
+    <b>The one-line goal</b>
+    When someone opens your profile they should know, without scrolling: what you build,
+    who you build it for, and where they can see it working.
+  </div>
+</section>
+
+<!-- ============ 2. COPY ============ -->
+<section class="page newpage">
+  <h2><span class="num">02</span> Copy-paste rewrite</h2>
+  <p class="lede">Name, headline, and About. Replace the text wholesale.</p>
+
+  <h3>Name</h3>
+  <p>
+    Use <strong>Muhammad Kashif</strong> everywhere — it matches your portfolio, CV, GitHub and the
+    name clients actually search. If you want to keep <em>Malik</em>, put it in the About section
+    ("also known as Malik") rather than the display name.
+  </p>
+
+  <h3>Headline (220 characters)</h3>
+  <div class="copy"><span class="tag">Option A · recommended for clients</span>Full-Stack SaaS Architect | I build multi-tenant platforms that ship revenue, not demos | 7 platforms, 3 live, 500+ tenants | Next.js · NestJS · AI</div>
+
+  <div class="copy alt"><span class="tag">Option B · for hiring managers</span>Full-Stack SaaS Architect &amp; Founder @ MTK Codex | 7 production platforms (FinTech · AgriTech · EdTech · Sports) | Next.js · TypeScript · AI · CRM</div>
+
+  <div class="note warn">
+    <b>Rules</b>
+    Never write "passionate", "hardworking", "aspiring", or "looking for opportunities".
+    One proof number, one stack, one niche.
+  </div>
+
+  <h3>About</h3>
+  <div class="copy"><span class="tag">Paste into About</span>I build the software businesses actually run on — multi-tenant SaaS platforms, AI-assisted CRM systems, and cross-platform apps.
+
+Seven platforms shipped. Three live in production. 500+ tenants and 50K+ animals tracked. I own the whole stack: PostgreSQL schema → API → UI → payments → CI/CD → handover docs.
+
+Most freelancers hand you a landing page. I hand you a system your team can operate without me.
+
+What I do:
+• Multi-tenant SaaS — PostgreSQL RLS, Clerk Organizations, subdomain isolation
+• AI that survives production — GPT workflows, TensorFlow.js on-device ML, guardrails, cost caps, kill switches
+• Cross-platform delivery — Next.js web, React Native mobile, Electron desktop
+• Revenue plumbing — Stripe, RevenueCat, JazzCash, EasyPaisa, subscriptions and feature gating
+• CRM and internal tools — the unglamorous systems that remove manual work
+
+Selected proof:
+• InstalEase — installment-management SaaS with 6-tier RBAC and RLS isolation
+• MTK Dairy — 500+ farms, 50K+ animals, IoT milking-machine feeds, bilingual Urdu/English
+• Shakir Super League — live white-label cricket SaaS with 5-language AI commentary and WebRTC streaming (cricketleague.tech)
+• MTK Edu — 90+ APIs, biometric attendance, offline-first teacher app
+• LaraibCreative — live luxury fashion store with custom measurements and local payments
+
+Currently a Full Stack Engineer at Pastry Marketing Agency, building an AI-assisted Smart CRM and client portal — while running MTK Codex for selected freelance engagements.
+
+If you are building a SaaS, replacing spreadsheets with a real system, or adding AI without the bill shock, message me. I reply within 12 hours.
+
+Portfolio: https://pf.mtkcodex.site</div>
+
+  <div class="note ok">
+    <b>Why this order</b>
+    Outcome first, proof second, scope third, personality fourth, call to action last.
+    LinkedIn shows roughly three lines before <em>see more</em> — those three lines are the pitch.
+  </div>
+</section>
+
+<!-- ============ 3. EXPERIENCE ============ -->
+<section class="page">
+  <h2><span class="num">03</span> Experience &amp; skills</h2>
+  <p class="lede">Make every bullet prove ownership, then fix what recruiters see first.</p>
+
+  <h3>Full Stack Engineer — Pastry Marketing Agency <span style="color:#94a3b8;font-weight:400">Aug 2026 – Present</span></h3>
+  <div class="copy"><span class="tag">Description</span>• Build and maintain the agency's Smart CRM and client portal with Next.js, TypeScript, React and PostgreSQL
+• Ship AI-driven automation that removes manual steps from client onboarding, reporting and follow-up
+• Own features end to end — schema, API, UI and deployment — and turn non-technical requests into scoped releases
+• Work directly with account managers and leadership to prioritise the roadmap</div>
+
+  <h3>Full-Stack SaaS Architect &amp; Founder — MTK Codex <span style="color:#94a3b8;font-weight:400">Jan 2024 – Present</span></h3>
+  <div class="copy"><span class="tag">Description</span>• Founded and lead a studio shipping multi-tenant SaaS for clients in Pakistan and internationally
+• Shipped 7 production platforms across FinTech, AgriTech, EdTech, SportsTech, e-commerce, AI security and desktop
+• 3 platforms live in production serving 500+ tenants and 50K+ tracked entities on a 99.9% uptime target
+• Architected tenant isolation with PostgreSQL RLS, Clerk Organizations and stancl/tenancy — zero cross-tenant leaks
+• Delivered 200+ API endpoints and shipped OpenAI GPT, TensorFlow.js on-device ML and Vercel AI SDK features
+• Integrated Stripe, RevenueCat and local gateways (JazzCash, EasyPaisa, XPay) with subscription billing</div>
+
+  <h3>Frontend &amp; Full-Stack Developer — Freelance <span style="color:#94a3b8;font-weight:400">Jun 2022 – Dec 2023</span></h3>
+  <div class="copy"><span class="tag">Description</span>• Delivered 10+ client projects — e-commerce, dashboards and landing pages — on schedule
+• Built the LaraibCreative luxury fashion store with JWT auth, Cloudinary media and local payments
+• Migrated the stack to Next.js, TypeScript and Tailwind CSS, cutting page load times by roughly 60%
+• Established the component and design-system patterns reused across every later project</div>
+
+  <h3>Skills — pin these three first</h3>
+  <div class="grid2">
+    <div>
+      <p><strong>Pin (top 3 shown by default):</strong></p>
+      <ol>
+        <li>SaaS Development</li>
+        <li>Next.js</li>
+        <li>TypeScript</li>
+      </ol>
+    </div>
+    <div>
+      <p><strong>Then add, in this order:</strong></p>
+      <p style="font-size:9pt">
+        React · React Native · NestJS · Laravel · Node.js · PostgreSQL · Supabase ·
+        Multi-Tenant Architecture · Row Level Security · REST APIs · WebSockets ·
+        AI Integration · OpenAI API · TensorFlow.js · Tailwind CSS · Electron ·
+        Docker · Stripe · Payment Integration · CI/CD · System Architecture
+      </p>
+    </div>
+  </div>
+
+  <div class="note warn">
+    <b>Remove</b>
+    Generic entries like Microsoft Office or Customer Service. They drag the average down and
+    say nothing about what you build.
+  </div>
+</section>
+
+<!-- ============ 4. LIVE LINKS ============ -->
+<section class="page">
+  <h2><span class="num">04</span> Adding live links</h2>
+  <p class="lede">The exact click paths. This is the part most people get wrong.</p>
+
+  <p>
+    LinkedIn only makes links clickable in <strong>specific places</strong>. A URL typed into your
+    About section is plain text — it looks like a link, but nobody can tap it. So the strategy is:
+    put your proof where LinkedIn allows clicking, and stop relying on the places it does not.
+  </p>
+
+  <table>
+    <tr><th>Where</th><th>Clickable?</th><th>Use it for</th></tr>
+    <tr><td>Featured section</td><td><span class="pill yes">Yes</span></td><td>All 7 projects, with thumbnails</td></tr>
+    <tr><td>Contact info → Website</td><td><span class="pill yes">Yes</span></td><td>Portfolio, company site, GitHub</td></tr>
+    <tr><td>Custom profile button</td><td><span class="pill yes">Yes</span></td><td>"Visit portfolio" next to Connect</td></tr>
+    <tr><td>Posts, comments, articles</td><td><span class="pill yes">Yes</span></td><td>Build logs and case studies</td></tr>
+    <tr><td>About section text</td><td><span class="pill no">No</span></td><td>Leave URL for copy-paste only</td></tr>
+    <tr><td>Experience descriptions</td><td><span class="pill no">No</span></td><td>Describe the outcome, not the link</td></tr>
+    <tr><td>Headline</td><td><span class="pill no">No</span></td><td>Message only — no URLs</td></tr>
+  </table>
+
+  <h3>4.1 · Add the seven Featured links</h3>
+  <ol class="steps">
+    <li>Open your profile and scroll to the <strong>Featured</strong> section.</li>
+    <li>Click the <strong>+</strong> (or the pencil, then <strong>+</strong>). A menu appears.</li>
+    <li>Choose <strong>Add a link</strong>.</li>
+    <li>Paste the URL from the table on the next page. LinkedIn fetches a preview.</li>
+    <li>Replace the auto-generated title with the custom title from the table — this is what people read.</li>
+    <li>Click <strong>Add media</strong> → upload the matching PNG from your <span class="path">linkedin-assets</span> folder.</li>
+    <li>Save. Repeat for each project, <strong>strongest first</strong> — Featured displays in the order you add them.</li>
+  </ol>
+
+  <div class="note ok">
+    <b>Why thumbnails matter</b>
+    A Featured card with a real screenshot gets scanned as proof. A bare URL card gets ignored as spam.
+    All four images are already cropped to 1200 × 630 and named in the order to upload them.
+  </div>
+
+  <h3>4.2 · Set the custom button</h3>
+  <ol class="steps">
+    <li>Open your profile and click the pencil / <strong>Edit profile</strong>.</li>
+    <li>Find the <strong>custom button</strong> area near the top, beside Connect and Message.</li>
+    <li>Choose the label <strong>Visit portfolio</strong> (or <em>Visit website</em> if that option appears instead).</li>
+    <li>Paste <span class="path">https://pf.mtkcodex.site</span> and save.</li>
+  </ol>
+
+  <h3>4.3 · Add links to Contact info</h3>
+  <ol class="steps">
+    <li>On your profile, open <strong>Contact info</strong> (under the intro, or via <em>More</em>).</li>
+    <li>Click the pencil and choose <strong>Website</strong> → <strong>Add website</strong>.</li>
+    <li>Set the label to <em>Portfolio</em> and the URL to <span class="path">https://pf.mtkcodex.site</span>.</li>
+    <li>Add a second entry labelled <em>GitHub</em> → <span class="path">https://github.com/Kaashmalik</span>.</li>
+    <li>Confirm your email and phone (WhatsApp) are present, then save.</li>
+  </ol>
+
+  <h3>4.4 · If a link will not attach</h3>
+  <ul style="font-size:9.2pt">
+    <li><strong>No preview appears</strong> — your site is blocking LinkedIn's crawler. Add the link anyway, then upload the thumbnail manually.</li>
+    <li><strong>"URL not valid"</strong> — missing <span class="path">https://</span>, a trailing space, or a local file path. Paste the exact URL from page 5.</li>
+    <li><strong>Wrong image on the card</strong> — LinkedIn cached the page's default social image. Remove the item, re-add it, upload media instead.</li>
+    <li><strong>Cannot feature someone else's post</strong> — by design. Only your own posts, articles and links can be featured.</li>
+    <li><strong>Cards appear out of order</strong> — Featured follows the order you added them. Remove and re-add to reorder.</li>
+  </ul>
+</section>
+
+<!-- ============ 5. LINK TABLE ============ -->
+<section class="page newpage">
+  <h2><span class="num">05</span> The link list</h2>
+  <p class="lede">Copy these exactly. All were verified returning HTTP 200 on 8 Nov 2026.</p>
+
+  <table>
+    <tr><th>Order &amp; title to use</th><th>URL</th><th>Thumbnail</th></tr>
+    <tr>
+      <td>1 · Muhammad Kashif — 7 SaaS platforms, 3 live in production</td>
+      <td style="font-size:8.4pt;word-break:break-all">https://pf.mtkcodex.site</td>
+      <td>01-portfolio.png</td>
+    </tr>
+    <tr>
+      <td>2 · MTK Dairy — 500+ farms, 50K+ animals, live AgriTech SaaS</td>
+      <td style="font-size:8.4pt;word-break:break-all">https://dairy.mtkcodex.site</td>
+      <td>02-mtk-dairy.png</td>
+    </tr>
+    <tr>
+      <td>3 · LaraibCreative — live luxury e-commerce store</td>
+      <td style="font-size:8.4pt;word-break:break-all">https://www.laraibcreative.studio</td>
+      <td>03-laraibcreative.png</td>
+    </tr>
+    <tr>
+      <td>4 · Shakir Super League — live white-label cricket SaaS</td>
+      <td style="font-size:8.4pt;word-break:break-all">https://www.cricketleague.tech</td>
+      <td>04-shakir-super-league.png</td>
+    </tr>
+    <tr>
+      <td>5 · InstalEase — FinTech SaaS case study</td>
+      <td style="font-size:8.4pt;word-break:break-all">https://pf.mtkcodex.site/projects/instalease/</td>
+      <td>Screenshot or default</td>
+    </tr>
+    <tr>
+      <td>6 · MTK Edu — EdTech SaaS, 90+ APIs, offline-first</td>
+      <td style="font-size:8.4pt;word-break:break-all">https://pf.mtkcodex.site/projects/mtk-edu/</td>
+      <td>Screenshot or default</td>
+    </tr>
+    <tr>
+      <td>7 · MTK AlertPro — on-device AI security app</td>
+      <td style="font-size:8.4pt;word-break:break-all">https://github.com/Kaashmalik/mtk-alert-pro</td>
+      <td>Repo social preview</td>
+    </tr>
+  </table>
+
+  <div class="note info">
+    <b>Free CV download</b>
+    Your CV is live at
+    <strong>pf.mtkcodex.site/documents/Muhammad-Kashif-CV.pdf</strong>
+    — add it as an eighth Featured item labelled <em>"My CV — full-stack SaaS architect"</em>
+    so nobody has to ask you for it.
+  </div>
+
+  <h3>Services — choose five, drop the rest</h3>
+  <p>
+    Go to <span class="path">Open to</span> → <strong>Providing services</strong>, then select:
+  </p>
+  <ol>
+    <li>SaaS Development</li>
+    <li>Web Development</li>
+    <li>Mobile Application Development</li>
+    <li>AI Integration &amp; Automation</li>
+    <li>Technical Architecture Consulting</li>
+  </ol>
+  <p>
+    Remove <strong>SEO</strong> and <strong>Android Development</strong>. Neither is a lie, but both
+    pull the profile back toward "generalist freelancer" and away from "the person who builds the platform".
+  </p>
+
+  <div class="note warn">
+    <b>Turn off the green frame</b>
+    Remove <strong>#OpenToWork</strong>. Replace it with <em>Providing services</em> plus the
+    <em>Hire me</em> button. Same reachability, better positioning.
+  </div>
+</section>
+
+<!-- ============ 6. RECOMMENDATIONS ============ -->
+<section class="page newpage">
+  <h2><span class="num">06</span> Recommendations &amp; content</h2>
+  <p class="lede">Trust, then proof. This is what turns a profile into inbound work.</p>
+
+  <h3>Request three recommendations this week</h3>
+  <p>
+    You currently show none. For freelance and contract hiring this is the single highest-leverage
+    fix on the page. Send this to the InstalEase owner, the Shakir Super League organiser, and the
+    MTK Edu administrator:
+  </p>
+
+  <div class="copy"><span class="tag">Message template</span>Hi [Name] — I'm updating my LinkedIn with the work we shipped together and I'd be grateful for a short recommendation. If it helps, here's a draft you can edit:
+
+"Kashif built our [platform] end to end — [one specific thing he solved]. He shipped on schedule, communicated clearly, and the system has run reliably since launch. I'd hire him again."
+
+No pressure if you're busy — even two sentences helps. Thank you!</div>
+
+  <p>
+    Then <strong>recommend them back</strong>. Reciprocity roughly doubles the response rate.
+    Ask the same three for a two-line testimonial with name, role, company and LinkedIn URL for the
+    portfolio — anonymous quotes are worth very little.
+  </p>
+
+  <h3>A four-post rotation that generates inbound</h3>
+  <p>Post one to two times a week. Proof beats motivation every time.</p>
+
+  <table>
+    <tr><th>Slot</th><th>Format</th><th>Hook</th></tr>
+    <tr>
+      <td>Build log</td>
+      <td>What shipped + the hard part</td>
+      <td>"Shipped this week: [feature]. The hard part was not the UI — it was [problem]."</td>
+    </tr>
+    <tr>
+      <td>Teardown</td>
+      <td>One technical lesson</td>
+      <td>"Most multi-tenant SaaS apps leak data in one place: [place]. Here's the checklist."</td>
+    </tr>
+    <tr>
+      <td>Client outcome</td>
+      <td>Before → after, with a number</td>
+      <td>"[Client] ran [process] in spreadsheets. Now [number] farms use it daily."</td>
+    </tr>
+    <tr>
+      <td>Soft CTA</td>
+      <td>Availability + process</td>
+      <td>"I have room for one more build this month. Here's how I scope it: 1… 2… 3…"</td>
+    </tr>
+  </table>
+
+  <div class="note warn">
+    <b>Posting mechanics</b>
+    Only the first two lines show before <em>see more</em> — make them the hook. Keep external links
+    out of the post body (LinkedIn suppresses reach); put them in the first comment.
+    Reply to every comment within the first hour.
+  </div>
+</section>
+
+<!-- ============ 7. CHECKLIST ============ -->
+<section class="page newpage compact">
+  <h2><span class="num">07</span> Do-it-now checklist</h2>
+  <p class="lede">In order. The whole list takes about ninety minutes.</p>
+
+  <h3>Identity</h3>
+  <ul class="check">
+    <li>Rename to <strong>Muhammad Kashif</strong> (or commit to Malik everywhere)</li>
+    <li>Replace the headline with Option A or B</li>
+    <li>Update the banner to match the headline — 1584 × 396 px</li>
+    <li>Rewrite the About section from page 2</li>
+  </ul>
+
+  <h3>Proof</h3>
+  <ul class="check">
+    <li>Add all 7 Featured links, strongest first</li>
+    <li>Upload the four thumbnails from <span class="path">linkedin-assets</span></li>
+    <li>Add the CV as an eighth Featured item</li>
+    <li>Set the custom button to <strong>Visit portfolio</strong> → pf.mtkcodex.site</li>
+    <li>Add Portfolio and GitHub under Contact info</li>
+  </ul>
+
+  <h3>Positioning</h3>
+  <ul class="check">
+    <li>Rewrite all three roles with the numbered bullets</li>
+    <li>Pin SaaS Development, Next.js, TypeScript</li>
+    <li>Add the full skill list; remove generic skills</li>
+    <li>Reduce Services to the five focused ones</li>
+    <li>Remove the #OpenToWork frame; switch to Providing services</li>
+    <li>Turn on Creator mode only if you will actually post weekly</li>
+  </ul>
+
+  <h3>Momentum</h3>
+  <ul class="check">
+    <li>Request 3 recommendations using the template</li>
+    <li>Recommend those 3 people back</li>
+    <li>Publish one build-log post</li>
+    <li>Ask for 3 attributable testimonials for the portfolio</li>
+  </ul>
+
+  <h3>Contact block — keep consistent everywhere</h3>
+  <div class="kv" style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:5mm 6mm">
+    <p><b>Email</b> kaash0542@gmail.com</p>
+    <p><b>WhatsApp</b> +92 303 8111297</p>
+    <p><b>GitHub</b> github.com/Kaashmalik</p>
+    <p><b>Portfolio</b> pf.mtkcodex.site</p>
+    <p><b>Company</b> mtkcodex.tech</p>
+    <p><b>Location</b> Lahore, Pakistan · Remote worldwide</p>
+  </div>
+
+  <div class="note info" style="margin-top:6mm">
+    <b>Repeat this line everywhere</b>
+    "I build multi-tenant SaaS platforms that businesses run on — 7 shipped, 3 live, 500+ tenants."
+    Headline, About, banner, portfolio hero, GitHub bio, email signature. Repetition is what makes
+    a personal brand stick.
+  </div>
+</section>
+
+</body>
+</html>

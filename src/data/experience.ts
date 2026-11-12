@@ -12,6 +12,22 @@ export interface ExperienceItem {
 
 export const experience: ExperienceItem[] = [
   {
+    id: 'exp-0',
+    role: 'Full Stack Engineer',
+    company: 'Pastry Marketing Agency',
+    location: 'Lahore, PK · Remote',
+    period: 'Aug 2026 — Present',
+    type: 'full-time',
+    description: 'Building and maintaining the agency\'s Smart CRM system and client portal, plus the AI workflows that run on top of it.',
+    achievements: [
+      'Building the Smart CRM and client portal end to end with Next.js, TypeScript, React, PostgreSQL, and Python services',
+      'Shipping AI-driven automation that removes manual steps from client onboarding and reporting',
+      'Owning features across schema, API, UI, and deployment — not just frontend tickets',
+      'Turning non-technical stakeholder requests into scoped, shippable releases',
+    ],
+    techUsed: ['Next.js', 'TypeScript', 'React', 'PostgreSQL', 'Python', 'Tailwind CSS'],
+  },
+  {
     id: 'exp-1',
     role: 'Full-Stack SaaS Architect',
     company: 'MTK Codex',

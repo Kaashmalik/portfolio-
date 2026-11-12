@@ -161,9 +161,15 @@ export default function About() {
                 >
                   <Download size={18} /> Download CV
                 </a>
-                <button className={styles.primaryChip} data-cursor="interactive">
+                <a
+                  href="https://wa.me/923038111297?text=Hi%20Muhammad%2C%20I%27d%20like%20to%20book%20a%2030-min%20build%20session."
+                  className={styles.primaryChip}
+                  data-cursor="interactive"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <Sparkles size={16} /> Book a 30-min build session
-                </button>
+                </a>
               </div>
             </div>
           </ScrollReveal>

@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1200px; height: 630px; overflow: hidden; }
+  body {
+    font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+    background: #07070d;
+    color: #f8fafc;
+    position: relative;
+  }
+  .glow-a {
+    position: absolute; width: 700px; height: 700px; left: -220px; top: -260px;
+    background: radial-gradient(circle, rgba(0,255,255,0.32), transparent 62%);
+    filter: blur(30px);
+  }
+  .glow-b {
+    position: absolute; width: 720px; height: 720px; right: -240px; bottom: -320px;
+    background: radial-gradient(circle, rgba(168,85,247,0.38), transparent 62%);
+    filter: blur(30px);
+  }
+  .grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: radial-gradient(circle at 50% 45%, black 35%, transparent 78%);
+    opacity: 0.55;
+  }
+  .frame {
+    position: relative; z-index: 2; height: 100%;
+    padding: 58px 64px;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .top { display: flex; align-items: center; justify-content: space-between; }
+  .brand { display: flex; align-items: center; gap: 14px; font-size: 20px; letter-spacing: 0.28em; text-transform: uppercase; color: #94a3b8; }
+  .brand b { color: #22d3ee; font-weight: 700; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 18px #22c55e; }
+  .avail { display: flex; align-items: center; gap: 10px; font-size: 16px; color: #cbd5e1; letter-spacing: 0.04em; }
+  .main { display: flex; align-items: flex-end; justify-content: space-between; gap: 48px; }
+  h1 { font-size: 86px; line-height: 0.94; letter-spacing: -0.04em; font-weight: 800; }
+  h1 span { display: block; background: linear-gradient(100deg, #22d3ee, #a855f7); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .role { margin-top: 20px; font-size: 22px; letter-spacing: 0.24em; text-transform: uppercase; color: #94a3b8; }
+  .stats { display: flex; flex-direction: column; gap: 18px; min-width: 240px; }
+  .stat { padding: 16px 20px; border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; background: rgba(255,255,255,0.04); }
+  .stat b { display: block; font-size: 34px; line-height: 1; letter-spacing: -0.02em; }
+  .stat small { display: block; margin-top: 7px; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: #94a3b8; }
+  .bottom { display: flex; align-items: center; justify-content: space-between; }
+  .url { font-size: 24px; font-weight: 600; color: #e2e8f0; }
+  .url b { color: #22d3ee; }
+  .stack { display: flex; gap: 10px; flex-wrap: wrap; }
+  .chip { padding: 8px 14px; border: 1px solid rgba(255,255,255,0.14); border-radius: 999px; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #cbd5e1; }
+</style>
+</head>
+<body>
+  <div class="glow-a"></div>
+  <div class="glow-b"></div>
+  <div class="grid"></div>
+  <div class="frame">
+    <div class="top">
+      <div class="brand">MTK <b>CODEX</b></div>
+      <div class="avail"><span class="dot"></span> Available for freelance — reply in 12 hrs</div>
+    </div>
+
+    <div class="main">
+      <div>
+        <h1>MUHAMMAD <span>KASHIF</span></h1>
+        <div class="role">Full-Stack SaaS Architect</div>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>7</b><small>Platforms shipped</small></div>
+        <div class="stat"><b>3</b><small>Live in production</small></div>
+        <div class="stat"><b>500+</b><small>Tenants served</small></div>
+      </div>
+    </div>
+
+    <div class="bottom">
+      <div class="url">pf.<b>mtkcodex.site</b></div>
+      <div class="stack">
+        <span class="chip">Next.js</span>
+        <span class="chip">TypeScript</span>
+        <span class="chip">NestJS</span>
+        <span class="chip">AI</span>
+        <span class="chip">Multi-tenant</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

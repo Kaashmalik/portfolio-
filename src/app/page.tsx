@@ -2,6 +2,7 @@ import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
 import Skills from "@/components/sections/Skills";
 import Projects from "@/components/sections/Projects";
+import WhyHire from "@/components/sections/WhyHire";
 import Experience from "@/components/sections/Experience";
 import Services from "@/components/sections/Services";
 import Testimonials from "@/components/sections/Testimonials";
@@ -24,6 +25,9 @@ export default function Home() {
 
       <div className="divider" />
       <Projects />
+
+      <div className="divider" />
+      <WhyHire />
 
       <div className="divider" />
       <Experience />

@@ -23,9 +23,9 @@
 
 .terminalCard {
   border-radius: var(--radius-xl);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--surface-border);
   background: var(--bg-tertiary);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+  box-shadow: var(--surface-shadow);
   overflow: hidden;
 }
 
@@ -74,7 +74,7 @@
   font-size: 5rem;
   font-weight: 700;
   color: var(--accent-cyan);
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.6), rgba(10, 10, 15, 0.95));
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.6), var(--surface-card-strong));
   letter-spacing: 0.1em;
 }
 
@@ -153,9 +153,9 @@
 .statCard {
   padding: 1.5rem;
   border-radius: var(--radius-lg);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(10, 10, 15, 0.7);
-  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--surface-border);
+  background: var(--surface-card-soft);
+  box-shadow: var(--surface-shadow-soft);
 }
 
 .statValue {
@@ -182,9 +182,9 @@
 .skillSegments {
   padding: var(--space-xl);
   border-radius: var(--radius-xl);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(18, 18, 26, 0.85);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--surface-border);
+  background: var(--surface-card);
+  box-shadow: var(--surface-shadow);
 }
 
 .skillSegmentsHeader {

@@ -1,0 +1,625 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>LinkedIn Outreach Playbook — Muhammad Kashif</title>
+<style>
+  @page { size: A4; margin: 16mm 15mm 18mm 15mm; }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --ink: #0f172a;
+    --body: #334155;
+    --muted: #64748b;
+    --line: #e2e8f0;
+    --cyan: #0891b2;
+    --purple: #7c3aed;
+    --soft: #f8fafc;
+    --good: #047857;
+    --bad: #b91c1c;
+  }
+
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  body {
+    font-family: "Segoe UI", -apple-system, "Helvetica Neue", Arial, sans-serif;
+    color: var(--body);
+    font-size: 10.2pt;
+    line-height: 1.55;
+  }
+
+  /* ---------- COVER ---------- */
+  .cover {
+    height: 258mm;
+    background: #07070d;
+    color: #f8fafc;
+    border-radius: 10px;
+    padding: 26mm 20mm;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+  }
+  .cover::before {
+    content: "";
+    position: absolute;
+    width: 420px; height: 420px;
+    left: -140px; top: -160px;
+    background: radial-gradient(circle, rgba(34,211,238,.45), transparent 65%);
+    filter: blur(24px);
+  }
+  .cover::after {
+    content: "";
+    position: absolute;
+    width: 460px; height: 460px;
+    right: -170px; bottom: -200px;
+    background: radial-gradient(circle, rgba(168,85,247,.5), transparent 65%);
+    filter: blur(24px);
+  }
+  .cover > * { position: relative; z-index: 2; }
+  .cover .kicker {
+    font-size: 9pt;
+    letter-spacing: .34em;
+    text-transform: uppercase;
+    color: #22d3ee;
+    font-weight: 600;
+  }
+  .cover h1 {
+    font-size: 38pt;
+    line-height: 1.02;
+    letter-spacing: -.035em;
+    font-weight: 800;
+    margin-top: 8mm;
+  }
+  .cover h1 em { display: block; font-style: normal; color: #22d3ee; }
+  .cover .sub {
+    margin-top: 7mm;
+    font-size: 12pt;
+    color: #cbd5e1;
+    max-width: 122mm;
+    line-height: 1.5;
+  }
+  .cover .rule {
+    width: 28mm; height: 3px;
+    background: linear-gradient(90deg, #22d3ee, #a855f7);
+    border-radius: 2px;
+    margin: 10mm 0 6mm;
+  }
+  .cover .meta {
+    display: flex;
+    gap: 12mm;
+    font-size: 9pt;
+    color: #94a3b8;
+    border-top: 1px solid rgba(255,255,255,.14);
+    padding-top: 6mm;
+  }
+  .cover .meta b { display: block; color: #e2e8f0; font-size: 10pt; margin-bottom: 1mm; }
+
+  /* ---------- STRUCTURE ---------- */
+  .page { margin-top: 9mm; }
+  .newpage { page-break-before: always; break-before: page; margin-top: 0; }
+
+  h2 {
+    page-break-after: avoid;
+    break-after: avoid;
+    font-size: 17pt;
+    color: var(--ink);
+    letter-spacing: -.02em;
+    font-weight: 700;
+    margin-bottom: 2mm;
+    display: flex;
+    align-items: baseline;
+    gap: 3mm;
+  }
+  h2 .num {
+    font-size: 9pt;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(135deg, var(--cyan), var(--purple));
+    padding: 1.2mm 2.4mm;
+    border-radius: 4px;
+    letter-spacing: .08em;
+  }
+  .lede {
+    color: var(--muted);
+    font-size: 10pt;
+    margin-bottom: 7mm;
+    padding-bottom: 4mm;
+    border-bottom: 1px solid var(--line);
+  }
+  h3 {
+    font-size: 11.5pt;
+    color: var(--ink);
+    margin: 6mm 0 2mm;
+    font-weight: 650;
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+  h3:first-of-type { margin-top: 0; }
+  p { margin-bottom: 2.5mm; }
+  ul, ol { margin: 0 0 3mm 5mm; }
+  li { margin-bottom: 1.4mm; }
+  strong { color: var(--ink); font-weight: 650; }
+
+  /* ---------- TABLES ---------- */
+  table { width: 100%; border-collapse: collapse; font-size: 8.9pt; margin: 3mm 0 5mm; }
+  th {
+    text-align: left;
+    background: var(--soft);
+    color: var(--ink);
+    font-weight: 650;
+    padding: 2mm 2.4mm;
+    border-bottom: 1.5px solid var(--line);
+    font-size: 8.4pt;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+  }
+  td {
+    padding: 1.9mm 2.4mm;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+  tr { page-break-inside: avoid; break-inside: avoid; }
+  tr:nth-child(even) td { background: #fcfdff; }
+  td:first-child { color: var(--ink); font-weight: 600; width: 26%; }
+
+  /* ---------- COPY BLOCKS ---------- */
+  .copy {
+    background: var(--soft);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--cyan);
+    border-radius: 5px;
+    padding: 3.3mm 4mm;
+    margin: 2.4mm 0 3.6mm;
+    font-size: 9pt;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    color: #1e293b;
+  }
+  .copy .tag {
+    display: block;
+    font-family: "Consolas", monospace;
+    font-size: 7.5pt;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    margin-bottom: 2.2mm;
+    font-weight: 700;
+  }
+  .copy.alt { border-left-color: var(--purple); }
+  .copy.alt .tag { color: var(--purple); }
+  .copy.quiet { border-left-color: #94a3b8; }
+  .copy.quiet .tag { color: #64748b; }
+
+  /* ---------- CALLOUTS ---------- */
+  .note {
+    border-radius: 5px;
+    padding: 3.2mm 3.8mm;
+    margin: 2.5mm 0 4mm;
+    font-size: 9.1pt;
+    page-break-inside: avoid;
+  }
+  .note.warn { background: #fef2f2; border: 1px solid #fecaca; color: #7f1d1d; }
+  .note.ok { background: #f0fdf4; border: 1px solid #bbf7d0; color: #14532d; }
+  .note.info { background: #eff6ff; border: 1px solid #bfdbfe; color: #1e3a8a; }
+  .note b { display: block; margin-bottom: 1mm; font-size: 9pt; letter-spacing: .04em; text-transform: uppercase; }
+
+  .path {
+    font-family: "Consolas", monospace;
+    font-size: 8.6pt;
+    background: #f1f5f9;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 0.4mm 1.4mm;
+    color: #0f172a;
+    white-space: nowrap;
+  }
+
+  .count {
+    float: right;
+    font-family: "Consolas", monospace;
+    font-size: 7.4pt;
+    color: #94a3b8;
+    letter-spacing: .04em;
+  }
+
+  .grid2 { display: flex; gap: 6mm; }
+  .grid2 > * { flex: 1; }
+
+  .compact h3 { margin: 3.4mm 0 1.2mm; }
+  .compact li { margin-bottom: 1mm; }
+  .compact .note { margin-top: 3mm; }
+</style>
+</head>
+<body>
+
+<!-- ============ COVER ============ -->
+<div class="cover">
+  <div>
+    <div class="kicker">Outreach Playbook · 2026</div>
+    <h1>LINKEDIN<em>OUTREACH</em></h1>
+    <div class="rule"></div>
+    <p class="sub">
+      How to turn Premium into actual conversations — who to message, exactly what to write,
+      and what to do when they reply.
+    </p>
+  </div>
+  <div class="meta">
+    <div><b>Prepared for</b>Muhammad Kashif</div>
+    <div><b>Plan</b>LinkedIn Premium</div>
+    <div><b>Companion</b>LinkedIn-Playbook.pdf</div>
+    <div><b>Date</b>8 November 2026</div>
+  </div>
+</div>
+
+<!-- ============ 1. PREMIUM ============ -->
+<section class="page">
+  <h2><span class="num">01</span> Using Premium properly</h2>
+  <p class="lede">Most people pay for Premium and use none of it. These are the parts that pay for themselves.</p>
+
+  <table>
+    <tr><th>Feature</th><th>Worth it?</th><th>How to actually use it</th></tr>
+    <tr>
+      <td>InMail credits</td>
+      <td>Yes — this is the main one</td>
+      <td>Message people you are not connected to. Keep it under 900 characters.</td>
+    </tr>
+    <tr>
+      <td>Who viewed your profile</td>
+      <td>Yes</td>
+      <td>Expanded to 90 days. Someone who viewed you is a warm lead — reply within 48 hours.</td>
+    </tr>
+    <tr>
+      <td>Advanced search filters</td>
+      <td>Yes</td>
+      <td>Seniority, function, company size, years of experience. This is how you build a real list.</td>
+    </tr>
+    <tr>
+      <td>Applicant insights</td>
+      <td>Only when applying</td>
+      <td>Shows how you compare to other applicants. Does not get you the job — use it to pick battles.</td>
+    </tr>
+    <tr>
+      <td>Salary insights</td>
+      <td>Sometimes</td>
+      <td>Useful when a recruiter asks for a number before you have scope.</td>
+    </tr>
+    <tr>
+      <td>LinkedIn Learning</td>
+      <td>Optional</td>
+      <td>Only if a specific role asks for a specific skill you lack.</td>
+    </tr>
+    <tr>
+      <td>Premium badge</td>
+      <td>Neutral</td>
+      <td>Nobody hired anyone for the badge. Ignore it.</td>
+    </tr>
+  </table>
+
+  <div class="note info">
+    <b>Before you send anything</b>
+    Ninety percent of outreach fails because the profile does not survive the click.
+    Fix these five first — full detail is in <span class="path">LinkedIn-Playbook.pdf</span>:
+  </div>
+
+  <ol class="compact">
+    <li><strong>Headline</strong> — proof-led, not a job title</li>
+    <li><strong>About first three lines</strong> — outcome, then evidence</li>
+    <li><strong>Featured</strong> — all 7 projects with live links and thumbnails</li>
+    <li><strong>Custom button</strong> — "Visit portfolio" → pf.mtkcodex.site</li>
+    <li><strong>Services</strong> — five focused services, no SEO or Android filler</li>
+  </ol>
+
+  <p>
+    People check the profile before they reply. If the message is good and the profile is empty,
+    you lose the reply anyway.
+  </p>
+</section>
+
+<!-- ============ 2. FINDING PEOPLE ============ -->
+<section class="page newpage">
+  <h2><span class="num">02</span> Who to message</h2>
+  <p class="lede">Ten researched messages beat a hundred templated ones. Build a list of twenty.</p>
+
+  <h3>Four search recipes</h3>
+
+  <table>
+    <tr><th>Target</th><th>Search</th><th>Why they buy</th></tr>
+    <tr>
+      <td>Small SaaS founders</td>
+      <td>Title: Founder OR CEO · Industry: Software Development · Company size: 11–50</td>
+      <td>They need a second build, a rewrite, or a feature their team cannot ship</td>
+    </tr>
+    <tr>
+      <td>Agency owners</td>
+      <td>Title: Owner OR Managing Director · Industry: Marketing &amp; Advertising</td>
+      <td>They sell work they cannot deliver — CRM, portals, client dashboards</td>
+    </tr>
+    <tr>
+      <td>Hiring managers</td>
+      <td>Search <em>Posts</em> → "hiring [your role]" → filter Past week</td>
+      <td>They posted the need publicly, which means it is real and urgent</td>
+    </tr>
+    <tr>
+      <td>Job posters</td>
+      <td>Jobs tab → open a role → the poster is listed under "Posted by"</td>
+      <td>Messaging the poster beats applying into the void</td>
+    </tr>
+  </table>
+
+  <h3>Signals worth acting on</h3>
+  <ul>
+    <li>They posted a job for something you have shipped before</li>
+    <li>They announced funding, a launch, or a new market</li>
+    <li>They are complaining publicly about spreadsheets, manual work, or a broken process</li>
+    <li>They just hired a Head of Operations — systems work usually follows</li>
+    <li>They viewed your profile (check the last 90 days in Premium)</li>
+  </ul>
+
+  <div class="note ok">
+    <b>The best first message is not a pitch</b>
+    It is proof that you looked. One specific detail about their product, their post, or their
+    job listing is worth more than three paragraphs about you.
+  </div>
+
+  <h3>Build the list in one sitting</h3>
+  <ol class="compact">
+    <li>Open a sheet with: name, company, role, URL, signal, channel, date, status, next action</li>
+    <li>Add 20 people using the recipes above</li>
+    <li>Write one line per person explaining why <em>them</em> specifically</li>
+    <li>If you cannot write that line, remove them — you will send a bad message</li>
+    <li>Template is ready at <span class="path">linkedin-assets/outreach-tracker.csv</span></li>
+  </ol>
+</section>
+
+<!-- ============ 3. CONNECTION NOTES ============ -->
+<section class="page newpage">
+  <h2><span class="num">03</span> Connection notes</h2>
+  <p class="lede">300 characters. No pitch. The only goal is the accept.</p>
+
+  <div class="copy"><span class="tag">A · Founder, product-specific</span>Hi [Name] — I build multi-tenant SaaS platforms (7 shipped, 3 live). Saw [Company] is scaling [specific thing]; happy to share how we handled [specific problem] without adding headcount. Worth connecting?</div>
+
+  <div class="copy"><span class="tag">B · Hiring manager</span>Hi [Name] — saw you're hiring a [role]. I've shipped 7 production platforms on Next.js and TypeScript, end to end. Happy to send the three questions I'd ask every candidate for that role. Worth connecting?</div>
+
+  <div class="copy alt"><span class="tag">C · Via a shared connection</span>Hi [Name] — [Mutual] suggested I reach out. I build SaaS platforms end to end (7 shipped, 3 live). Not pitching anything — I'd just like to stay connected in case [topic] comes up on your side.</div>
+
+  <div class="copy alt"><span class="tag">D · After their post</span>Hi [Name] — your post on [topic] was the clearest take I've read on it. I've been dealing with the same problem at [Company]. Would like to follow what you ship next.</div>
+
+  <div class="copy quiet"><span class="tag">E · No context, keep it light</span>Hi [Name] — I work on multi-tenant SaaS and AI workflows out of Lahore. Your work on [thing] caught my eye. Happy to connect and swap notes on [topic].</div>
+
+  <table>
+    <tr><th>Rule</th><th>Why</th></tr>
+    <tr><td>Never mention "opportunities"</td><td>It reads as a job request and gets declined</td></tr>
+    <tr><td>One specific detail</td><td>It is the only thing proving this is not a blast</td></tr>
+    <tr><td>No links</td><td>Links in a first message look like spam</td></tr>
+    <tr><td>End with a question</td><td>Questions get accepted and answered more than statements</td></tr>
+  </table>
+
+  <div class="note warn">
+    <b>Volume</b>
+    Send 20–25 a week, not 100. LinkedIn limits invitations and flags accounts that behave
+    like a mail merge. Quality is also simply faster.
+  </div>
+</section>
+
+<!-- ============ 4. INMAIL ============ -->
+<section class="page newpage">
+  <h2><span class="num">04</span> InMail</h2>
+  <p class="lede">For people you cannot connect with. Shorter than you think.</p>
+
+  <p>
+    InMail is a paid message to someone outside your network. It arrives with a subject line and
+    gets one shot — there is no thread to recover in. Keep it under 900 characters, make one ask,
+    and skip everything that sounds like a brochure. The shape is: proof you looked → proof you
+    built → one small ask → a clean exit.
+  </p>
+
+  <div class="copy"><span class="tag">Client · subject: "Your [product] + [specific feature]"</span>Hi [Name],
+
+You added [specific feature] to [Product] last month — that's the part I'd have built first too.
+
+I build multi-tenant SaaS platforms end to end: 7 shipped, 3 live, 500+ tenants. The closest thing to your setup was [project], where [one concrete result].
+
+I'm not asking for a project. I'd like 15 minutes to show you two things I'd change in [specific area] — you keep the ideas either way.
+
+Does Thursday or Friday work better?
+
+— Kashif</div>
+
+  <div class="copy alt"><span class="tag">Hiring manager · subject: "[Role] — shipped 7 platforms, 3 live"</span>Hi [Name],
+
+Saw the [role] post. Rather than send a CV cold, one thing that might be useful: I've shipped 7 production platforms (Next.js, TypeScript, PostgreSQL), three of them live with real tenants today.
+
+For a role like yours the relevant part is probably [specific requirement from their post] — I did exactly that at [project], where [result].
+
+If it's still open, I'd welcome 15 minutes. If it's filled, I'd still like to know what the team is building.
+
+— Kashif</div>
+
+  <div class="copy quiet"><span class="tag">Partnership · subject: "Idea for [Company] + [Partner]"</span>Hi [Name],
+
+You and [Partner] serve the same customer from different angles — [observation].
+
+I build the systems in the middle: multi-tenant SaaS, integrations, AI workflows. I've done this for [comparable situation].
+
+Worth a short call to see if there's something real here? If not, I'll leave you alone.
+
+— Kashif</div>
+
+</section>
+
+<!-- ============ 5. SEQUENCE ============ -->
+<section class="page newpage">
+  <h2><span class="num">05</span> The follow-up sequence</h2>
+  <p class="lede">Most replies come from the second and third touch. Most people stop after the first.</p>
+
+  <table>
+    <tr><th>When</th><th>What you send</th><th>Goal</th></tr>
+    <tr><td>Day 0</td><td>Connection note or InMail</td><td>Get the accept or the read</td></tr>
+    <tr><td>Day 1–2</td><td>Thanks + context, no ask</td><td>Become a person, not a request</td></tr>
+    <tr><td>Day 4</td><td>One specific observation about their product</td><td>Give value before asking for anything</td></tr>
+    <tr><td>Day 9</td><td>The actual ask — 15 minutes</td><td>Convert interest into a conversation</td></tr>
+    <tr><td>Day 16</td><td>Clean close-out</td><td>Leave the door open, stop the chase</td></tr>
+  </table>
+
+  <div class="copy"><span class="tag">Day 1–2 · after they accept</span>Thanks for connecting, [Name]. Quick context so I'm not a stranger in your feed: I build multi-tenant SaaS platforms — 7 shipped, 3 live in production. Currently working on [thing] at [Company].
+
+No ask. Just thought [specific thing about them] was worth following.</div>
+
+  <div class="copy"><span class="tag">Day 4 · the value drop</span>[Name] — I was on [Product] this morning and noticed [specific observation]. If you're already aware, ignore me. If not, it's probably costing [specific cost] on [specific flow].
+
+Happy to send the one-page write-up I made for a similar case — no charge.</div>
+
+  <div class="copy alt"><span class="tag">Day 9 · the ask</span>[Name] — I'll be direct since you're busy: I have room for one build next month, and [Company] is the kind of problem I'd want to work on.
+
+Fifteen minutes to see if there's a fit? If the timing is wrong, tell me and I'll check back in [quarter].</div>
+
+  <div class="copy quiet"><span class="tag">Day 16 · close-out</span>[Name] — I'll stop here so I'm not cluttering your inbox. If [specific thing] becomes a priority later, I'm easy to find.
+
+Good luck with [specific thing they're doing].</div>
+
+  <div class="note warn">
+    <b>Three follow-ups, then stop</b>
+    Silence is usually timing, not rejection. Chasing past three messages costs you the
+    relationship and the referral that might have come from it.
+  </div>
+</section>
+
+<!-- ============ 6. JOB TRACK ============ -->
+<section class="page newpage">
+  <h2><span class="num">06</span> The job track</h2>
+  <p class="lede">Same principles, different audience. Recruiters skim the spec; hiring managers decide on what ships.</p>
+
+  <h3>To a recruiter</h3>
+  <div class="copy"><span class="tag">Subject: "[Role] — 7 platforms shipped, 3 live"</span>Hi [Name],
+
+I applied for [role] on [date] and wanted to put a face to the application.
+
+Short version: 7 production SaaS platforms shipped, 3 live with real tenants, full stack from PostgreSQL schema to deployment. The closest match to your spec is [project] — [one result].
+
+Happy to answer anything the CV doesn't cover.
+
+— Kashif</div>
+
+  <h3>To the hiring manager directly</h3>
+  <div class="copy alt"><span class="tag">Subject: "One question about [role]"</span>Hi [Name],
+
+You're hiring a [role]. I'll skip the pitch and ask the question I'd want answered if I were you: is the priority shipping [specific thing] in the next quarter, or stabilising what already exists?
+
+I've done both — most recently [example with a number]. If the first one is the answer, we should talk.
+
+— Kashif</div>
+
+  <h3>Asking for a referral</h3>
+  <div class="copy quiet"><span class="tag">Subject: "Quick favour — [Company] [role]"</span>Hi [Name],
+
+You're at [Company] and they're hiring a [role]. I'm not going to ask you to vouch for me blind.
+
+If you're open to it, I'll send you a three-line summary and my CV — you can forward it or ignore it with no hard feelings.
+
+Either way, good to be connected.</div>
+
+</section>
+
+<!-- ============ 7. OBJECTIONS ============ -->
+<section class="page newpage compact">
+  <h2><span class="num">07</span> When they reply</h2>
+  <p class="lede">The reply is not the win. The next step is.</p>
+
+  <table>
+    <tr><th>They say</th><th>You say</th></tr>
+    <tr>
+      <td>"Send your CV"</td>
+      <td>Sent — plus a one-page case study of the closest thing I've built for you: [link]. If it's useful, I can walk through the architecture in 15 minutes.</td>
+    </tr>
+    <tr>
+      <td>"What's your rate?"</td>
+      <td>Most builds like this land between [X] and [Y] depending on scope. I can send a fixed-scope quote after a 15-minute call — that way you're not comparing guesses.</td>
+    </tr>
+    <tr>
+      <td>"We're not hiring now"</td>
+      <td>Understood. I'll check back in [quarter]. In the meantime, here's a short teardown of one thing I noticed in [product] — no charge, no strings.</td>
+    </tr>
+    <tr>
+      <td>"We already have a team"</td>
+      <td>Makes sense. Teams usually get stuck on [specific thing] rather than general capacity. If that becomes the bottleneck, I do short engagements for exactly that.</td>
+    </tr>
+    <tr>
+      <td>"Too expensive"</td>
+      <td>Fair. What range are you working with? I'll tell you honestly what's realistic at that number instead of quietly shrinking the scope.</td>
+    </tr>
+    <tr>
+      <td>"Let me think about it"</td>
+      <td>Of course. I'll follow up on [specific date]. If it's easier, here's the one-pager so you have the details when you need them.</td>
+    </tr>
+    <tr>
+      <td>No reply at all</td>
+      <td>Move to the close-out message on day 16. Do not send a fourth follow-up.</td>
+    </tr>
+  </table>
+
+  <h3>Four rules for every reply</h3>
+  <ol>
+    <li><strong>Reply within 24 hours</strong> — speed is read as reliability</li>
+    <li><strong>Never argue</strong> — a polite "that makes sense" beats being right</li>
+    <li><strong>Always end with a next step or a clean exit</strong> — never leave it hanging</li>
+    <li><strong>Never discount reflexively</strong> — change scope, not price</li>
+  </ol>
+
+  <div class="note ok">
+    <b>Turn every conversation into evidence</b>
+    After each call, ask: "Would you be open to a two-line note about what we discussed?
+    It helps people like you decide whether I'm worth fifteen minutes." That is how the
+    recommendation count on your profile goes up without begging.
+  </div>
+</section>
+
+<!-- ============ 8. ETIQUETTE + PLAN ============ -->
+<section class="page newpage compact">
+  <h2><span class="num">08</span> Rules, tracking, first week</h2>
+  <p class="lede">The boring parts that keep your account healthy and your pipeline honest.</p>
+
+  <h3>Etiquette and account safety</h3>
+  <ul>
+    <li><strong>Personalise line one.</strong> If it could be sent to anyone, do not send it.</li>
+    <li><strong>Under 900 characters.</strong> Long messages read as effort you made for yourself, not them.</li>
+    <li><strong>No links in the first message.</strong> Save them for when they ask.</li>
+    <li><strong>20–25 invitations a week.</strong> Near the limit looks automated.</li>
+    <li><strong>No automation tools or bots.</strong> This is the fastest way to get restricted.</li>
+    <li><strong>One follow-up per thread per week.</strong> More than that is pestering.</li>
+    <li><strong>Reply within 24 hours</strong> when they respond — including "no".</li>
+  </ul>
+
+  <h3>Track it or it did not happen</h3>
+  <p>
+    Use <span class="path">linkedin-assets/outreach-tracker.csv</span> — open it in Excel or Google
+    Sheets. Columns: name, company, role, URL, signal, channel, first message date, status,
+    next action date, notes, outcome.
+  </p>
+  <p>
+    Review it every Friday. Anyone with no reply after three touches moves to <em>dormant</em>
+    and gets revisited next quarter. That is not failure — that is a list that keeps working.
+  </p>
+
+  <h3>Your first week</h3>
+  <table>
+    <tr><th>Day</th><th>Action</th><th>Time</th></tr>
+    <tr><td>Mon</td><td>Profile pass — headline, About, Featured, button, services</td><td>45 min</td></tr>
+    <tr><td>Tue</td><td>Build the list of 20 with one reason each</td><td>40 min</td></tr>
+    <tr><td>Wed</td><td>Send 10 connection notes + 3 InMails</td><td>30 min</td></tr>
+    <tr><td>Thu</td><td>Follow up with everyone who accepted</td><td>20 min</td></tr>
+    <tr><td>Fri</td><td>Value drops, review the tracker, request one recommendation</td><td>30 min</td></tr>
+  </table>
+
+  <div class="note info">
+    <b>What good looks like after 30 days</b>
+    Twenty real conversations, three to five calls, one or two proposals — and a profile that
+    answers the question before anyone asks it. That is a working pipeline, not luck.
+  </div>
+</section>
+
+</body>
+</html>

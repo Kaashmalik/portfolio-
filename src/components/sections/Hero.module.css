@@ -188,6 +188,30 @@
   opacity: 1;
 }
 
+.liveProof {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+}
+
+.liveProof a {
+  color: var(--text-primary);
+  border-bottom: 1px solid rgba(0, 255, 255, 0.35);
+  padding-bottom: 1px;
+  transition: color var(--duration-fast) ease, border-color var(--duration-fast) ease;
+}
+
+.liveProof a:hover {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+}
+
 .heroMeta {
   display: flex;
   flex-wrap: wrap;
@@ -198,7 +222,7 @@
 .metaItem {
   min-width: 180px;
   padding: 1rem 1.25rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--surface-border);
   border-radius: var(--radius-md);
   background: var(--glass-bg);
   text-align: left;
@@ -241,7 +265,7 @@
   left: 0;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(10, 10, 15, 0.85);
+  background: var(--surface-card);
 }
 
 .marqueeTrack {
@@ -342,5 +366,43 @@
   .marqueeItem {
     letter-spacing: 0.15em;
     font-size: 0.75rem;
+  }
+
+  .hero {
+    padding-left: var(--space-md);
+    padding-right: var(--space-md);
+  }
+
+  .glitch {
+    font-size: clamp(1.65rem, 8.4vw, 2.75rem);
+    letter-spacing: -0.06em;
+  }
+
+  .roleLabel {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+  }
+
+  .typewriter {
+    display: block;
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  .typeCursor {
+    display: inline-block;
+    vertical-align: middle;
+    height: 1rem;
+  }
+
+  .statusBadge {
+    font-size: 0.72rem;
+    text-align: left;
+    line-height: 1.5;
+  }
+
+  .cta {
+    padding: 0.8rem 1.4rem;
+    font-size: 0.82rem;
   }
 }

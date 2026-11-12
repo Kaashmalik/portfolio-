@@ -30,6 +30,9 @@ const trustSignals = [
   { icon: Globe, text: 'Available 9+ hrs/day — Remote Worldwide' },
 ];
 
+const WHATSAPP_NUMBER = '923038111297';
+const EMAIL = 'kaash0542@gmail.com';
+
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
@@ -40,11 +43,36 @@ export default function Contact() {
     message: '',
   });
 
+  const buildBrief = () =>
+    [
+      'New project brief — from pf.mtkcodex.site',
+      '',
+      `Name: ${formData.name}`,
+      `Email: ${formData.email}`,
+      `Project type: ${formData.projectType || 'Not specified'}`,
+      `Budget: ${formData.budget || 'Not specified'}`,
+      '',
+      'Details:',
+      formData.message,
+    ].join('\n');
+
+  const resetForm = () => {
+    setFormData({ name: '', email: '', projectType: '', budget: '', message: '' });
+  };
+
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
+    const brief = buildBrief();
+    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(brief)}`;
+    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
     setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 5000);
-    setFormData({ name: '', email: '', projectType: '', budget: '', message: '' });
+  };
+
+  const handleEmail = () => {
+    const brief = buildBrief();
+    const subject = `Project inquiry — ${formData.projectType || 'SaaS build'}`;
+    window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(brief)}`;
+    setSubmitted(true);
   };
 
   return (
@@ -92,15 +120,15 @@ export default function Contact() {
               </p>
 
               <div className={styles.contactItems}>
-                <a href="mailto:kaash0542@gmail.com" className={styles.contactItem}>
+                <a href={`mailto:${EMAIL}`} className={styles.contactItem}>
                   <div className={styles.contactItemIcon}><Mail size={18} /></div>
                   <div>
                     <div className={styles.contactItemLabel}>Email</div>
-                    <div className={styles.contactItemValue}>kaash0542@gmail.com</div>
+                    <div className={styles.contactItemValue}>{EMAIL}</div>
                   </div>
                 </a>
 
-                <a href="https://wa.me/923038111297" target="_blank" rel="noopener noreferrer" className={styles.contactItem}>
+                <a href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noopener noreferrer" className={styles.contactItem}>
                   <div className={styles.contactItemIcon}><Phone size={18} /></div>
                   <div>
                     <div className={styles.contactItemLabel}>WhatsApp</div>
@@ -189,16 +217,30 @@ export default function Contact() {
                 />
               </div>
 
-              {submitted ? (
-                <div className={styles.successMessage}>
-                  <CheckCircle size={16} />
-                  Message sent! I&apos;ll respond within 12 hours with a detailed estimate.
-                </div>
-              ) : (
+              <div className={styles.formActions}>
                 <button type="submit" className={styles.submitButton}>
                   <Send size={18} />
-                  Send Project Brief
+                  Send on WhatsApp
                 </button>
+                <button type="button" className={styles.emailButton} onClick={handleEmail}>
+                  <Mail size={18} />
+                  Email instead
+                </button>
+              </div>
+
+              <p className={styles.formNote}>
+                This opens WhatsApp or your email app with the brief pre-filled — no form server,
+                no lost messages. I reply within 12 hours.
+              </p>
+
+              {submitted && (
+                <div className={styles.successMessage} role="status" aria-live="polite">
+                  <CheckCircle size={16} />
+                  Brief ready — send it in WhatsApp or email and I&apos;ll reply within 12 hours.
+                  <button type="button" className={styles.resetButton} onClick={resetForm}>
+                    Start a new brief
+                  </button>
+                </div>
               )}
             </form>
           </div>
